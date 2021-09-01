@@ -32,7 +32,7 @@ function Listing() {
 		<div>
 			<h1>API data</h1>
 			{console.log(gameData)}
-			<ul>{gameData?.results?.map(item=>(
+			<ol>{gameData?.results?.map(item=>(
                 <li>
                     <div className="d-flex flex-column justify-content-center">
                     <span id="game-title">{item.name}</span>
@@ -43,7 +43,7 @@ function Listing() {
                     
                 </li>
 
-            ))}</ul>
+            ))}</ol>
 		</div>
 	);
 }

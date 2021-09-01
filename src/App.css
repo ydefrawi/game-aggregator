@@ -43,9 +43,9 @@ img{
   max-width:max-content;
 }
 
-li{
+/* li{
   list-style:decimal;
-}
+} */
 
 li::marker{
   margin:0;
