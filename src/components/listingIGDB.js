@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-const key = '57f00ef977554b86b26053099f4d7489';
+const auth = 'https://id.twitch.tv/oauth2/token?client_id=abcdefg12345&client_secret=hijklmn67890&grant_type=client_credentials
+';
 
 function Listing() {
     const [error, setError] = useState(null);
@@ -13,8 +14,8 @@ function Listing() {
 	useEffect(() => {
         fetch(`https://api.rawg.io/api/games?key=${key}`)
         .then((res) => {
-            const result=res.json();
-            return result;
+            res.json()
+            console.log(res)
         }
         )
         .then(
@@ -32,18 +33,11 @@ function Listing() {
 		<div>
 			<h1>API data</h1>
 			{console.log(gameData)}
-			<ul>{gameData?.results?.map(item=>(
+			<p>{gameData?.map(item=>(
                 <li>
-                    <div className="d-flex flex-column justify-content-center">
-                    <span id="game-title">{item.name}</span>
-                    <span>Rating: {item.rating}</span>
-                    <span>Released: {item.released}</span>
-                    <img src={item.background_image}/>
-                    </div>
-                    
+                    {item.results}
                 </li>
-
-            ))}</ul>
+            ))}</p>
 		</div>
 	);
 }

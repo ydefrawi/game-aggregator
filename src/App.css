@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+img{
+  margin:0 auto;
+  height:500px;
+  max-width:max-content;
+}
+
+li{
+  list-style:decimal;
+}
+
+li::marker{
+  margin:0;
+}
+
+#game-title{
+  font-weight: bold;
+}
