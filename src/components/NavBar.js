@@ -32,7 +32,7 @@ function NavBar() {
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">
-								Pricing
+								Trending
 							</a>
 						</li>
 						<li class="nav-item">

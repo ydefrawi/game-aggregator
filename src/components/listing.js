@@ -34,10 +34,10 @@ function Listing() {
 			{console.log(gameData)}
 			<ol>{gameData?.results?.map(item=>(
                 <li>
-                    <div className="d-flex flex-column justify-content-center">
+                    <div className="d-flex flex-column justify-content-center game-text">
                     <span id="game-title">{item.name}</span>
-                    <span>Rating: {item.rating}</span>
-                    <span>Released: {item.released}</span>
+                    <span id="game-rating">Rating: {item.rating}</span>
+                    <span id="game-released">Released: {item.released}</span>
                     <img src={item.background_image}/>
                     </div>
                     

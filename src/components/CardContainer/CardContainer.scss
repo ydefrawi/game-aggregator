@@ -40,15 +40,23 @@ h1 {
   font-weight: 300;
 }
 
-.row {
-  max-width: 900px;
-  margin: 50px auto 0;
+.cards-row {
+  max-width: none;
+  margin: 50 0 50 0;
 }
 
+#card-section{
+    margin-top:50px;
+}
+
+
+
 // Base styles
-.card {
+.game-card {
   float: left;
   padding: 0 1.7rem;
+  min-width:400px;
+  max-width:500px;
   width: 50%;
   .menu-content {
     @include cf;
@@ -72,8 +80,9 @@ h1 {
     }
   }
   .wrapper {
-    background-color: $white;
-    min-height: 540px;
+    margin-bottom: 20px;
+    background-color:transparent;
+    min-height: 400px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 19px 38px rgba($black, 0.3), 0 15px 12px rgba($black, 0.2);
@@ -96,9 +105,10 @@ h1 {
     }
   }
   .author {
-    font-size: 12px;
+    font-size: 30px;
   }
   .title {
+    font-size: 15px;
     margin-top: 10px;
   }
   .text {
@@ -143,7 +153,9 @@ h1 {
     }
   }
   .content {
-    background-color: $white;
+    background-color: #000;
+    padding:10px;
+    border-radius: 20px;
     box-shadow: 0 5px 30px 10px rgba($black, 0.3);
   }
   .title {
@@ -217,7 +229,7 @@ h1 {
 // Second example styles
 .example-2 {
   .wrapper {
-    background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
+    // background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
     &:hover {
       .menu-content {
         span {
@@ -228,9 +240,11 @@ h1 {
     }
   }
   .header {
+    background-color: rgba(10, 0, 68, 0.541);
+    border-radius: 10px;
     @include cf;
     color: $white;
-    padding: 1em;
+    padding: 10px;
     .date {
       float: left;
       font-size: 12px;
@@ -248,10 +262,14 @@ h1 {
     }
   }
   .data {
+    background-color: rgba(10, 0, 68, 0.541);
+    padding:10px;
+    border-radius: 20px;
     color: $white;
     transform: translateY(calc(70px + 4em));
   }
   .title {
+
     a {
       color: $white;
     }
