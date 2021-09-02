@@ -9,9 +9,6 @@ function CardContainer(props) {
 			{/* ROW */}
 			<div className="cards-row">
 				{/* Card Start */}
-				{/* <GameCard/> */}
-				{/* Card End */}
-				{/* Card Start */}
 				<span id="card-map">
 					{props.gameData?.results?.map((item) => (
 						<GameCard2
