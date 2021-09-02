@@ -1,8 +1,14 @@
 .home-header{
     margin-top: 40px;
-    text-align: center;
-    font-size: 50px;
-    color: #fff;
+    margin-left:40px;
+    text-align: left;
+    font-size: 80px;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     background-color: transparent;
+}
+.sub-header{
+    margin-left:45px;
+    text-align: left;
+
 }
