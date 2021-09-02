@@ -14,19 +14,19 @@ function CardContainer(props) {
 				{/* Card Start */}
 				<span id="card-map">
 					{props.gameData?.results?.map((item) => (
-						<GameCard2 name={item.name} rating={item.rating} released={item.released} image={item.background_image}>
-							<div className="d-flex flex-column justify-content-center game-text">
-								<span id="game-title">{item.name}</span>
-								<span id="game-rating">Rating: {item.rating}</span>
-								<span id="game-released">Released: {item.released}</span>
-								<img src={item.background_image} />
-							</div>
-						</GameCard2>
+						<GameCard2
+							id={item.id}
+							key={item.id}
+							name={item.name}
+							rating={item.rating}
+							released={item.released}
+							image={item.background_image}
+						/>
 					))}
 				</span>
 				{/* Card End */}
 			</div>
-			</section>
+		</section>
 	);
 }
 

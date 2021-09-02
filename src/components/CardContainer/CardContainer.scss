@@ -81,6 +81,7 @@ h1 {
   }
   .wrapper {
     margin-bottom: 20px;
+    border-radius: 20px;
     background-color:transparent;
     min-height: 400px;
     position: relative;
@@ -113,6 +114,7 @@ h1 {
   }
   .text {
     height: 70px;
+    font-size: 12px;
     margin: 0;
   }
   input[type='checkbox'] {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../components/Header/Header'
 import Listing from '../components/Listing'
 import CardContainer from '../components/CardContainer/CardContainer'
 const key = '57f00ef977554b86b26053099f4d7489';
@@ -8,12 +9,9 @@ function Home(){
     const [isLoaded, setIsLoaded] = useState(false);
 	const [ gameData, setGameData ] = useState([]);
 
-	const apiCall = () => {
-
-	};
 
 	useEffect(() => {
-        fetch(`https://api.rawg.io/api/games?key=${key}`)
+        fetch(`https://api.rawg.io/api/games?ordering=released&key=${key}`)
         .then((res) => {
             const result=res.json();
             return result;
@@ -30,11 +28,11 @@ function Home(){
         })
 	},[]);
 
-console.log("platforms",gameData?.results?.platforms?.parent_platforms?.name);
+// console.log(gameData)
 
 return (
     <div>
-    {/* <Listing/> */}
+    <Header/>
     <CardContainer gameData={gameData}/>
     </div>
 
