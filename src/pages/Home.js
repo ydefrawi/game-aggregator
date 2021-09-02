@@ -11,9 +11,10 @@ function Home(){
 
 
 	useEffect(() => {
-        fetch(`https://api.rawg.io/api/games?ordering=released&key=${key}`)
+        fetch(`https://api.rawg.io/api/games?ordering=-released&metacritic=90,100&key=${key}57f00ef977554b86b26053099f4d7489`)
         .then((res) => {
             const result=res.json();
+            console.log(result)
             return result;
         }
         )
