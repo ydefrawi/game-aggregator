@@ -31,15 +31,23 @@ function GameCard2(props) {
 	}, []);
 
 	// issue with this below. variable or function?
-	// let platforms = gameDetails.parent_platforms.map((item=>(
-	// 	platArray.push(item.platform.name)
-	// )))
-	// console.log(platforms)
-	// var platArrayString = platArray.join(', ');
+
+const platforms =() =>{
+gameDetails.parent_platforms?.map((item=>(
+		platArray.push(item.platform.name)
+
+)))
+ return platArray.join(', ');
+};
+	
+
+	console.log(platforms)
+
+	var platArrayString = platArray.join(', ');
 
 	return (
 		<div class="example-2 game-card">
-			{console.log(gameDetails)}
+			{console.log("gameDetails" , gameDetails)}
 			<div
 				class="wrapper"
 				style={{
@@ -71,9 +79,12 @@ function GameCard2(props) {
 						<span class="author">{props.name}</span>
 						<h1 class="title">
 							{/* Something here breaks sometimes */}
-							<a href="#">{platArray}</a>
+							{/* platforms */}
+							<p href="#">
+								{platforms()}
+							</p>
 						</h1>
-						<p class="text">{gameDetails.description_raw}</p>
+						<p class="text">{gameDetails?.description_raw?.substring(0, 270)}</p>
 						<a href="#" class="button">
 							Read more
 						</a>

@@ -29,7 +29,7 @@ function Home(){
         })
 	},[]);
 
-// console.log(gameData)
+console.log(gameData)
 
 return (
     <div>
