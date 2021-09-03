@@ -48,10 +48,10 @@ function App() {
 						</div>
 					</Drawer>
 					<main className={classes.main}>
-						<Switch>
+						
 							<Route exact path={[ '/', '/home' ]} component={Home} />
 							<Route exact path={['/trending' ]} component={Trending} />
-						</Switch>
+						
 					</main>
 				</div>
 				<div className={classes.footer}>
