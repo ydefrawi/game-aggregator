@@ -30,8 +30,6 @@ function GameCard2(props) {
 			);
 	}, []);
 
-	// issue with this below. variable or function?
-
 const platforms =() =>{
 gameDetails.parent_platforms?.map((item=>(
 		platArray.push(item.platform.name)

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/Header'
-import Listing from '../components/Listing'
 import CardContainer from '../components/CardContainer/CardContainer'
 const key = '57f00ef977554b86b26053099f4d7489';
 
