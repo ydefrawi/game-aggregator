@@ -39,8 +39,7 @@ function App() {
 						}}
 					>
 						<div className="sidebar-item-container">
-							<h2>Browse</h2>
-
+							<h2 className="sidebar-item">Browse</h2>
 							<h4 className="sidebar-item">Platforms</h4>
 							<h4 className="sidebar-item">Genres</h4>
 							<h4 className="sidebar-item">Tags</h4>

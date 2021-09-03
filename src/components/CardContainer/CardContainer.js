@@ -3,16 +3,18 @@ import './CardContainer.css';
 import GameCard from '../GameCard/GameCard';
 import GameCard2 from '../GameCard2/GameCard2';
 
-function CardContainer(props) {
+function CardContainer({gameData, apiKey}) {
+
 	return (
 		<section id="card-section" className="container-fluid">
 			{/* ROW */}
 			<div className="cards-row">
 				{/* Card Start */}
 				<span id="card-map">
-					{props.gameData?.results?.map((item) => (
+					{gameData?.results?.map((item) => (
 						<GameCard2
-							id={item.id}
+							gameID={item.id}
+							apiKey={apiKey}
 							key={item.id}
 							name={item.name}
 							rating={item.rating}

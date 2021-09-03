@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/Header'
 import CardContainer from '../components/CardContainer/CardContainer'
-const key = '57f00ef977554b86b26053099f4d7489';
+// !IMPORTANT HIDE API KEY
+const apiKey = '57f00ef977554b86b26053099f4d7489';
 
 function Home(){
     const [error, setError] = useState(null);
@@ -10,7 +11,7 @@ function Home(){
 
 
 	useEffect(() => {
-        fetch(`https://api.rawg.io/api/games?ordering=metacritic=90,100&key=${key}`)
+        fetch(`https://api.rawg.io/api/games?ordering=metacritic=90,100&key=${apiKey}`)
         .then((res) => {
             const result=res.json();
             console.log(result)
@@ -33,7 +34,7 @@ console.log(gameData)
 return (
     <div>
     <Header/>
-    <CardContainer gameData={gameData}/>
+    <CardContainer gameData={gameData} apiKey={apiKey}/>
     </div>
 
 )

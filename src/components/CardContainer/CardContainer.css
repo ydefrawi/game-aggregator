@@ -4,14 +4,14 @@
           box-sizing: border-box;
 }
 
-/* #card-section {
+body {
   background-image: -webkit-gradient(linear, left top, right top, from(#034378), to(#2d4e68));
   background-image: linear-gradient(to right, #034378, #2d4e68);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height:min-content;
+  height: 100vh;
   font-family: "Open Sans", sans-serif;
-} */
+}
 
 a {
   text-decoration: none;
@@ -34,9 +34,9 @@ h1 {
 .game-card {
   float: left;
   padding: 0 1.7rem;
-  min-width: 300px;
-  max-width: 400px;
-  width: 100%;
+  min-width: 400px;
+  max-width: 500px;
+  width: 50%;
 }
 
 .game-card .menu-content {
@@ -108,7 +108,7 @@ h1 {
 }
 
 .game-card .author {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .game-card .title {
@@ -294,7 +294,7 @@ h1 {
 
 .example-2 .data {
   background-color: rgba(10, 0, 68, 0.541);
-  padding: 10px;
+  padding: 6px;
   border-radius: 20px;
   color: #fff;
   -webkit-transform: translateY(calc(70px + 4em));

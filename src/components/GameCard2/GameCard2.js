@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-const key = '57f00ef977554b86b26053099f4d7489';
+import './GameCard2.css'
 
-function GameCard2(props) {
-	const background = props.image;
-	const dateString = new Date(props.released).toDateString();
-	const id = props.id;
+// const key = '57f00ef977554b86b26053099f4d7489';
+
+function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
+// !IMPORTANT: HIDE API KEY
+	const background = image;
+	const dateString = new Date(released).toDateString();
 	let platArray = [];
-
+	
 	const [ error, setError ] = useState(null);
 	const [ isLoaded, setIsLoaded ] = useState(false);
 	const [ gameDetails, setGameDetails ] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://api.rawg.io/api/games/${id}?key=${key}`)
+		fetch(`https://api.rawg.io/api/games/${gameID}?key=${apiKey}`)
 			.then((res) => {
 				const result = res.json();
 				return result;
@@ -30,22 +32,34 @@ function GameCard2(props) {
 			);
 	}, []);
 
+// Function that pushes all the game's platforms into an array and adds a comma/space
+// between them
+
 const platforms =() =>{
-gameDetails.parent_platforms?.map((item=>(
+gameDetails?.parent_platforms?.map((item=>(
 		platArray.push(item.platform.name)
 
 )))
  return platArray.join(', ');
 };
+
+const starRating = () =>{
+		const starTotal=5;
+		const starPercentage = (rating/starTotal)*100;
+		const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
+		return starPercentageRounded;
+}
 	
 
-	console.log(platforms)
+
 
 	var platArrayString = platArray.join(', ');
 
 	return (
 		<div class="example-2 game-card">
 			{console.log("gameDetails" , gameDetails)}
+			{console.log(starRating())}
+
 			<div
 				class="wrapper"
 				style={{
@@ -74,10 +88,12 @@ gameDetails.parent_platforms?.map((item=>(
 				</div>
 				<div class="data">
 					<div class="content">
-						<span class="author">{props.name}</span>
+						<span class="author">{name}</span>
 						<h1 class="title">
-							{/* Something here breaks sometimes */}
-							{/* platforms */}
+							<p class="stars-outer">
+							<div class="stars-inner" style={{width:starRating()}}></div>
+							</p>
+							{/* Lists platforms game is available on */}
 							<p href="#">
 								{platforms()}
 							</p>

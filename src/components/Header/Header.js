@@ -4,8 +4,8 @@ import './Header.css'
 function Header() {
 	return (
 			<div>
-			<h1 className="home-header">New And Trending</h1>
-            <h5 className="sub-header">Based on Release Date</h5>
+			<h1 className="home-header">All Time Top Reviewed</h1>
+            <h5 className="sub-header">Based on Metacritic Score</h5>
 			</div>
 	);
 }
