@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NavBar from './components/NavBar/NavBar';
-import Home from './pages/Home';
 import Sidebar from './components/Sidebar';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -16,12 +15,15 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { styles } from './styles';
 import NavContainer from './components/NavContainer/NavContainer'
+// Pages
+import Home from './pages/Home';
+import Trending from './pages/Trending';
 
 const useStyles = makeStyles(styles);
 
 function App() {
 	const classes = useStyles();
-	const [ isOpened, setIsOpened ] = useState(false);
+	const [ isOpened, setIsOpened ] = useState(true);
 
 	return (
 		<Router>
@@ -48,6 +50,7 @@ function App() {
 					<main className={classes.main}>
 						<Switch>
 							<Route exact path={[ '/', '/home' ]} component={Home} />
+							<Route exact path={['/trending' ]} component={Trending} />
 						</Switch>
 					</main>
 				</div>
