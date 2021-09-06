@@ -14,12 +14,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { styles } from './styles';
-import NavContainer from './components/NavContainer/NavContainer'
+import NavContainer from './components/NavContainer/NavContainer';
 // Pages
 import Home from './pages/Home';
 import Trending from './pages/Trending';
-
+import GamePage from './pages/GamePage';
 const useStyles = makeStyles(styles);
+const apiKey = '57f00ef977554b86b26053099f4d7489';
 
 function App() {
 	const classes = useStyles();
@@ -28,7 +29,7 @@ function App() {
 	return (
 		<Router>
 			<div className={classes.root}>
-			<NavContainer isOpened={isOpened} setIsOpened={setIsOpened} />
+				<NavContainer isOpened={isOpened} setIsOpened={setIsOpened} />
 				<Toolbar />
 				<div className={classes.container}>
 					<Drawer
@@ -48,10 +49,11 @@ function App() {
 						</div>
 					</Drawer>
 					<main className={classes.main}>
-						
-							<Route exact path={[ '/', '/home' ]} component={Home} />
-							<Route exact path={['/trending' ]} component={Trending} />
-						
+						<Route exact path={[ '/', '/home' ]} component={Home} />
+						<Route exact path={[ '/trending' ]} component={Trending} />
+						<Route exact path={[ '/games/:id' ]}>
+							<GamePage apiKey={apiKey} />
+						</Route>
 					</main>
 				</div>
 				<div className={classes.footer}>
