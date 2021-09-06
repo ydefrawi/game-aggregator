@@ -4,21 +4,7 @@ import Header from '../components/Header/Header';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import './GamePage.css';
-// import { makeStyles } from '@material-ui/core/styles';
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       display: 'flex',
-//       flexWrap: 'wrap',
-//     //   justifyContent: 'space-around',
-//       overflow: 'hidden',
-//       backgroundColor: theme.palette.background.paper,
-//     },
-//     imageList: {
-//       width: 500,
-//       height: 450,
-//     },
-//   }));
 
 function GamePage({ apiKey }) {
 	const [ error, setError ] = useState(null);
@@ -77,14 +63,6 @@ function GamePage({ apiKey }) {
 			{console.log(gameScreens)}
 
 			<Header header={gameDetails.name} />
-			{/* 
-			<div className="">
-				{gameScreens?.map((item) => (
-					<div key={item.image}>
-						<img src={item.image} alt={item.title} />
-					</div>
-				))}
-			</div> */}
 
 			<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 				<div class="carousel-inner">

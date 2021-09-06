@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import {Link} from 'react-router-dom'
 import './GameCard2.css'
 
 // const key = '57f00ef977554b86b26053099f4d7489';
@@ -99,7 +100,8 @@ const starRating = () =>{
 							</p>
 						</h1>
 						<p class="text">{gameDetails?.description_raw?.substring(0, 270)}</p>
-						<a href="#" class="button">
+						{/* <Link to ={`/games${d}`} */}
+						<a href={"/games/"+gameDetails.id} class="button">
 							Read more
 						</a>
 					</div>
