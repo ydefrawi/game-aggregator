@@ -28,11 +28,9 @@ function GamePage({ apiKey }) {
 				})
 				.then(
 					(result) => {
-						setIsLoaded(true);
 						setGameDetails(result);
 					},
 					(error) => {
-						setIsLoaded(true);
 						setError(error);
 					}
 				)
@@ -44,11 +42,9 @@ function GamePage({ apiKey }) {
 						})
 						.then(
 							(result) => {
-								setIsLoaded(true);
 								setGameScreens(result.results);
 							},
 							(error) => {
-								setIsLoaded(true);
 								setError(error);
 							}
 						)
@@ -61,15 +57,16 @@ function GamePage({ apiKey }) {
 						})
 						.then(
 							(result) => {
-								setIsLoaded(true);
 								setGameVideos(result);
 							},
 							(error) => {
-								setIsLoaded(true);
+								// setIsLoaded(true);
 								setError(error);
 							}
 						)
-				)
+				).then(
+                    setIsLoaded(true)
+                )
 
 			console.log(gameDetails);
 		},
@@ -87,7 +84,7 @@ function GamePage({ apiKey }) {
 
 			<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 				<div class="carousel-inner">
-					{gameScreens?.map(
+					{gameScreens[0]?.image!=='https://media.rawg.io/media/screenshots/8de/8deccdba405d1ccdca2d647290156330.jpg' ? gameScreens?.map(
 						(item) =>
 							item === gameScreens[0] ? (
 							
@@ -99,7 +96,7 @@ function GamePage({ apiKey }) {
 									<img src={item.image} class="d-block w-100" alt="..." />
 								</div>
 							)
-					)}
+					): null}
 				</div>
 				<button
 					class="carousel-control-prev"

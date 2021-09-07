@@ -1,0 +1,8 @@
+.top-game-list{
+    list-style: none;
+    padding:0;
+}
+
+.top-game-bullet{
+    margin-bottom: 5px;
+}

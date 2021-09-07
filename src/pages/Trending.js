@@ -11,7 +11,7 @@ function Trending(){
 
 
 	useEffect(() => {
-        fetch(`https://api.rawg.io/api/games?ordering=-released&key=${apiKey}`)
+        fetch(`https://api.rawg.io/api/games?ordering=-released&dates=2011-01-01,2021-09-07&key=${apiKey}`)
         .then((res) => {
             const result=res.json();
             console.log(result)

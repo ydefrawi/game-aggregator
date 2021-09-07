@@ -1,47 +1,64 @@
 import React from 'react';
+import './PlatformCard.css';
 
-function PlatformCard({background, name, topGames}) {
+function PlatformCard({ background, name, topGames, gameCount }) {
+	let topGamesArray = [];
+
+	const topGamesFunction = () => {
+		topGames?.map((item) => topGamesArray.push(item.name));
+		return topGamesArray;
+	};
+
 	return (
-		<div class="example-1 game-card">
+		<div className="example-1 game-card">
+			{console.log(topGames)}
 			<div
-				class="wrapper"
+				className="wrapper"
 				style={{
 					backgroundImage: `url(${background})`,
 					backgroundRepeat: 'no-repeat',
 					backgroundSize: 'cover'
 				}}
 			>
-				
-				<div class="data">
-					<div class="content">
-						<span class="author">{name}</span>
-						<h1 class="title">
-							<a href="#">Top Games Here</a>
-						</h1>
-						<p class="text">
-							The highly anticipated world championship fight will take place at 10am and is the second
-							major boxing blockbuster in the nation after 43 years.
+				<div className="data">
+					<div className="content">
+						<span className="author">{name}</span>
+                        <hr/>
+						<p>
+							Popular Items: {gameCount}
 						</p>
-						<label for="show-menu" class="menu-button">
+                 
+
+						<ul className="top-game-list">
+							<h1 className="title">
+								{topGames.slice(0, 3).map((item) => (
+									<li className="top-game-bullet">
+										<a href={`/games/${item.id}`}>{item.name}</a>
+									</li>
+								))}
+							</h1>
+						</ul>
+
+						{/* <label for="show-menu" className="menu-button">
 							<span />
-						</label>
+						</label> */}
 					</div>
-					<input type="checkbox" id="show-menu" />
-					<ul class="menu-content">
+					{/* <input type="checkbox" id="show-menu" />
+					<ul className="menu-content">
 						<li>
-							<a href="#" class="fa fa-bookmark-o" />
+							<a href="#" className="fa fa-bookmark-o" />
 						</li>
 						<li>
-							<a href="#" class="fa fa-heart-o">
+							<a href="#" className="fa fa-heart-o">
 								<span>47</span>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="fa fa-comment-o">
+							<a href="#" className="fa fa-comment-o">
 								<span>8</span>
 							</a>
 						</li>
-					</ul>
+					</ul> */}
 				</div>
 			</div>
 		</div>

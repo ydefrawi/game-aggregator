@@ -49,7 +49,14 @@ function App() {
 					>
 						<div className="sidebar-item-container">
 							<h2 className="sidebar-item">Browse</h2>
-							<h4 className="sidebar-item">Platforms</h4>
+							<a href="/platforms">
+							<h4 className="sidebar-item">
+
+							Platforms
+							
+							</h4>
+
+							</a>
 							<h4 className="sidebar-item">Genres</h4>
 							<h4 className="sidebar-item">Tags</h4>
 						</div>
