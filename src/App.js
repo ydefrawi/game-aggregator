@@ -19,7 +19,13 @@ import NavContainer from './components/NavContainer/NavContainer';
 import Home from './pages/Home';
 import Trending from './pages/Trending';
 import GamePage from './pages/GamePage';
+import Platforms from './pages/Platforms'
+
+
+
 const useStyles = makeStyles(styles);
+
+//API KEY
 const apiKey = '57f00ef977554b86b26053099f4d7489';
 
 function App() {
@@ -53,6 +59,9 @@ function App() {
 						<Route exact path={[ '/trending' ]} component={Trending} />
 						<Route exact path={[ '/games/:id' ]}>
 							<GamePage apiKey={apiKey} />
+						</Route>
+						<Route exact path={[ '/platforms' ]}>
+							<Platforms apiKey={apiKey} />
 						</Route>
 					</main>
 				</div>

@@ -11,6 +11,7 @@ function GamePage({ apiKey }) {
 	const [ isLoaded, setIsLoaded ] = useState(false);
 	const [ gameDetails, setGameDetails ] = useState([]);
 	const [ gameScreens, setGameScreens ] = useState([]);
+	const [ gameVideos, setGameVideos ] = useState([]);
 	// const classes = useStyles();
 
 	let { id } = useParams();
@@ -51,7 +52,25 @@ function GamePage({ apiKey }) {
 								setError(error);
 							}
 						)
-				);
+				)
+				.then(
+					fetch(`https://api.rawg.io/api/games/${gameDetails.id}/movies?key=${apiKey}`)
+						.then((res) => {
+							const result = res.json();
+							return result;
+						})
+						.then(
+							(result) => {
+								setIsLoaded(true);
+								setGameVideos(result);
+							},
+							(error) => {
+								setIsLoaded(true);
+								setError(error);
+							}
+						)
+				)
+
 			console.log(gameDetails);
 		},
 		[ gameDetails.slug ]
@@ -61,6 +80,8 @@ function GamePage({ apiKey }) {
 		<div>
 			{console.log(gameDetails)}
 			{console.log(gameScreens)}
+			{console.log("gameVideos")}
+			{console.log(gameVideos)}
 
 			<Header header={gameDetails.name} />
 
