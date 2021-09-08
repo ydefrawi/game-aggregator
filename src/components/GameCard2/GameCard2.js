@@ -112,7 +112,7 @@ const starRating = () =>{
 							</p>
 							{/* Lists platforms game is available on */}
 							<p href="#">
-							<FontAwesomeIcon icon={faXbox} />
+							{/* <FontAwesomeIcon icon={faXbox} /> */}
 
 								{platforms()}
 							</p>
