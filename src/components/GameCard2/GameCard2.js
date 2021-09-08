@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import '@fortawesome/fontawesome-svg-core/styles.css';
+// import '@fortawesome/fontawesome-svg-core/styles.css';
 import {Link} from 'react-router-dom'
 import './GameCard2.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXbox } from '@fortawesome/free-brands-svg-icons'
+import { faPlaystation } from '@fortawesome/free-brands-svg-icons'
+import { faWindows } from '@fortawesome/free-brands-svg-icons'
+import { faApple } from '@fortawesome/free-brands-svg-icons'
+
+const icons = {
+	xbox: faXbox,
+	playstation: faPlaystation ,
+	pc:faWindows,
+	apple:faApple
+}
 
 // const key = '57f00ef977554b86b26053099f4d7489';
 
@@ -11,6 +23,8 @@ function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
 	const dateString = new Date(released).toDateString();
 	let platArray = [];
 	
+
+
 	const [ error, setError ] = useState(null);
 	const [ isLoaded, setIsLoaded ] = useState(false);
 	const [ gameDetails, setGameDetails ] = useState([]);
@@ -38,12 +52,14 @@ function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
 
 const platforms =() =>{
 gameDetails?.parent_platforms?.map((item=>(
-		platArray.push(item.platform.name)
+		// platArray.push(item.platform.name)
+			 <FontAwesomeIcon icon={icons[item.platform.slug]} />
 
 )))
- return platArray.join(', ');
+
 };
 
+//Creates 5-star rating from 0-5 reviews (4.4 becomes 4 and half stars, etc)
 const starRating = () =>{
 		const starTotal=5;
 		const starPercentage = (rating/starTotal)*100;
@@ -96,6 +112,8 @@ const starRating = () =>{
 							</p>
 							{/* Lists platforms game is available on */}
 							<p href="#">
+							<FontAwesomeIcon icon={faXbox} />
+
 								{platforms()}
 							</p>
 						</h1>
