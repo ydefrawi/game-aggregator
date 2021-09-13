@@ -38,7 +38,7 @@ function Platforms({ apiKey }) {
         
                         <div>
                             {console.log(item)}
-                            <PlatformCard background={item.image_background} name={item.name} topGames={item.games} gameCount={item.games_count}  />
+                            <PlatformCard id={item.id} background={item.image_background} name={item.name} topGames={item.games} gameCount={item.games_count}  />
                         </div>
 				)):
                 
