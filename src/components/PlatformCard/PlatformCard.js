@@ -1,7 +1,7 @@
 import React from 'react';
 import './PlatformCard.css';
 
-function PlatformCard({ background, name, topGames, gameCount }) {
+function PlatformCard({ background, name, topGames, gameCount, id }) {
 	let topGamesArray = [];
 
 	const topGamesFunction = () => {
@@ -22,7 +22,7 @@ function PlatformCard({ background, name, topGames, gameCount }) {
 			>
 				<div className="data">
 					<div className="content">
-						<span className="author">{name}</span>
+						<a href = {`/platforms/${id}`}><span className="author">{name}</span></a>
                         <hr/>
 						<p>
 							Popular Items: {gameCount}

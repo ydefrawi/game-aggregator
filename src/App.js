@@ -19,7 +19,8 @@ import NavContainer from './components/NavContainer/NavContainer';
 import Home from './pages/Home';
 import Trending from './pages/Trending';
 import GamePage from './pages/GamePage';
-import Platforms from './pages/Platforms'
+import Platforms from './pages/Platforms';
+import PlatformPage from './pages/PlatformPage';
 
 
 
@@ -69,6 +70,9 @@ function App() {
 						</Route>
 						<Route exact path={[ '/platforms' ]}>
 							<Platforms apiKey={apiKey} />
+						</Route>
+						<Route exact path={ [ '/platforms/:id' ]}>
+							<PlatformPage apiKey={apiKey} />
 						</Route>
 					</main>
 				</div>
