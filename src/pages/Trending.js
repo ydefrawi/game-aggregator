@@ -29,11 +29,11 @@ function Trending(){
         })
 	},[]);
 
-console.log(gameData)
-
-return (
-    <div>
-    <Header header={"Currently Trending"} subHeader={"Get them while they're hot!"}/>
+    
+    return (
+        <div>
+        {console.log(gameData)
+}    <Header header={"Currently Trending"} subHeader={"Get them while they're hot!"}/>
     <CardContainer gameData={gameData} apiKey={apiKey}/>
     </div>
 

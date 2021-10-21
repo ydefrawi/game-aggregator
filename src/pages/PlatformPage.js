@@ -9,8 +9,14 @@ function PlatformPage({apiKey}){
     
     const [platformDetails, setPlatformDetails] = useState({})
     const [platformGames, setPlatformGames] = useState([])
+
     
-    
+    const RenderHTML=(htmlPart)=>{
+        return(
+          <div dangerouslySetInnerHTML={ {__html: htmlPart} } />
+        )
+    }
+
     useEffect(() =>{
         fetch(`https://api.rawg.io/api/games?platforms=${id}&key=${apiKey}`)
         .then((res) => {
@@ -51,7 +57,7 @@ function PlatformPage({apiKey}){
 
     return(
         <div>
-        <Header header={platformDetails.name} subHeader={platformDetails.description}/>
+        <Header header={platformDetails.name} subHeader={RenderHTML(platformDetails.description)}/>
         <CardContainer gameData={platformGames} apiKey={apiKey}/>
         </div>
     )
