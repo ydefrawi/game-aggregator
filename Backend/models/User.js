@@ -4,7 +4,14 @@ const sequelize = require("../config/connection")
 class User extends Model{}
 
 //takes in 2 arguments, fields and options
-User.init({
+User.init(
+    {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
     firstName:{
         type:DataTypes.STRING,
         allowNull:false
@@ -19,7 +26,8 @@ User.init({
     }}, 
     {
         sequelize,
-        modelName: 'user'
+        timestamps: false,
+        modelName: 'User'
     }
 )
 
