@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS gamehub_db;
+CREATE DATABASE gamehub_db;
