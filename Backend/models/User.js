@@ -16,8 +16,10 @@ User.init({
     favorites:{
         type:DataTypes.STRING,
         allowNull:true
-    }}, {
-        sequelize
+    }}, 
+    {
+        sequelize,
+        modelName: 'user'
     }
 )
 
