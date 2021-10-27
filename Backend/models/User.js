@@ -17,7 +17,9 @@ User.init({
         type:DataTypes.STRING,
         allowNull:true
     }}, {
-        sequelize
+        sequelize, 
+        timestamps:false,
+        modelName:'User'
     }
 )
 
