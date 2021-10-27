@@ -1,31 +1,28 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class Games extends Model {}
 
 //takes in 2 arguments, fields and options
-User.init(
+Games.init(
 	{
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
-			autoIncrement: true
+			autoIncrement: false
 		},
-		firstName: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		lastName: {
-			type: DataTypes.STRING,
-			allowNull: false
-		}
+        name:{
+            type: DataTypes.STRING,
+            allowNull:false,
+        }
+		
 	},
 	{
 		sequelize,
 		timestamps: false,
-		modelName: 'user'
+		modelName: 'games'
 	}
 );
 
-module.exports = User;
+module.exports = Games;
