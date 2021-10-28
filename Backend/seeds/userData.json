@@ -7,6 +7,21 @@
     {
       "firstName": "Bob",
       "lastName": "Ross",
-      "favorites": "MS Paint"
+      "favorites": "The Witcher"
+    },
+    {
+      "firstName": "Tobias",
+      "lastName": "Funke",
+      "favorites": "Grand Theft Auto V"
+    },
+    {
+      "firstName": "Bojack",
+      "lastName": "Horseman",
+      "favorites": "Portal 2"
+    },
+    {
+      "firstName": "George",
+      "lastName": "Costanza",
+      "favorites": "Frogger 1985"
     }
   ]
