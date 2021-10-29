@@ -1,27 +1,22 @@
 [
     {
       "firstName": "Sal",
-      "lastName": "Vulcano",
-      "favorites": "God of War"
+      "lastName": "Vulcano"
     },
     {
       "firstName": "Bob",
-      "lastName": "Ross",
-      "favorites": "The Witcher"
+      "lastName": "Ross"
     },
     {
       "firstName": "Tobias",
-      "lastName": "Funke",
-      "favorites": "Grand Theft Auto V"
+      "lastName": "Funke"
     },
     {
       "firstName": "Bojack",
-      "lastName": "Horseman",
-      "favorites": "Portal 2"
+      "lastName": "Horseman"
     },
     {
       "firstName": "George",
-      "lastName": "Costanza",
-      "favorites": "Frogger 1985"
+      "lastName": "Costanza"
     }
   ]

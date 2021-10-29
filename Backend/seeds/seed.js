@@ -1,13 +1,13 @@
 const sequelize = require('../config/connection');
 
-//todo: index these
-const User = require('../models/User');
-const Favorites = require('../models/Favorites');
-const Games = require('../models/Games');
+//imported models from index 
+const {User, Favorites, Games, Reviews}=require ("../models")
 
+//json data for seeeds
 const userData = require('./userData.json');
 const favoritesData = require('./favoritesData.json');
 const gameData = require('./gameData.json');
+const reviewsData = require('./reviewsData.json');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
@@ -21,10 +21,17 @@ const seedDatabase = async () => {
         returning: true,
     });
     
+    await Reviews.bulkCreate(reviewsData, {
+        individualHooks: false,
+        returning: true,
+      });
+
     await Favorites.bulkCreate(favoritesData, {
       individualHooks: false,
       returning: true,
     });
+
+
 
     process.exit(0);
 }

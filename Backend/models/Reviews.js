@@ -10,7 +10,7 @@ Reviews.init(
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
-			autoIncrement: false
+			autoIncrement: true
 		},
         game_id:{
             type: DataTypes.INTEGER,
@@ -21,14 +21,14 @@ Reviews.init(
               },
         },
         review:{
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(1000),
             allowNull:false,
         },
         user_id:{
             type: DataTypes.INTEGER,
             allowNull:false,
             references: {
-                model: 'user',
+                model: 'users',
                 key: 'id',
               },
         },
