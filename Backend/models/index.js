@@ -1,7 +1,7 @@
-const User = require('./User');
-const Favorites = require('./Favorites');
-const Games = require('./Games');
-const Reviews = require('./Reviews');
+import User from './User.js';
+import Favorites from './Favorites.js';
+import Games from './Games.js';
+import Reviews from './Reviews.js';
 
 User.hasMany(Favorites, {
     foreignKey: 'user_id',
@@ -46,4 +46,4 @@ Reviews.belongsTo(User, {
 //   foreignKey: 'user_id',
 // });
 
-module.exports = {User, Favorites, Games, Reviews};
+export {User, Favorites, Games, Reviews};

@@ -1,4 +1,4 @@
-[
+const gameData = [
     {
       "id": 29179,
       "name": "God of War"
@@ -20,3 +20,5 @@
       "name": "Frogger 1985"
     }
 ]
+
+export default gameData;

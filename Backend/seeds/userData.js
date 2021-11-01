@@ -1,4 +1,4 @@
-[
+const userData = [
     {
       "firstName": "Sal",
       "lastName": "Vulcano"
@@ -20,3 +20,5 @@
       "lastName": "Costanza"
     }
   ]
+
+export default userData;

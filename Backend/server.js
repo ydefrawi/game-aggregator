@@ -1,11 +1,12 @@
-require('dotenv').config();
-const express = require("express");
+import dotenv from 'dotenv'
+import express from "express";
+import sequelize from './config/connection';
 const app = express();
 const PORT = process.env.PORT || 3001;
-const sequelize = require('./config/connection');
+dotenv.config();
 
 //! importing models
-const {User, Favorites, Games}=require ('./models')
+import {User, Favorites, Games} from './models';
 
 
 
