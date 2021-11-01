@@ -1,13 +1,13 @@
-const sequelize = require('../config/connection');
+import sequelize from '../config/connection.js';
 
 //imported models from index 
-const {User, Favorites, Games, Reviews}=require ("../models")
+import {User, Favorites, Games, Reviews} from "../models/index.js"
 
 //json data for seeeds
-const userData = require('./userData.json');
-const favoritesData = require('./favoritesData.json');
-const gameData = require('./gameData.json');
-const reviewsData = require('./reviewsData.json');
+import userData from './userData.js';
+import favoritesData from './favoritesData.js';
+import gameData from './gameData.js';
+import reviewsData from './reviewsData.js';
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });

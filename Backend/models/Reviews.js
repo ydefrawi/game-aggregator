@@ -1,5 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const { Model, DataTypes }=require('sequelize');
+import sequelize from '../config/connection.js';
 
 class Reviews extends Model {}
 
@@ -41,4 +43,4 @@ Reviews.init(
 	}
 );
 
-module.exports = Reviews;
+export default Reviews;

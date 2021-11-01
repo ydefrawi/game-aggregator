@@ -1,5 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const { Model, DataTypes }=require('sequelize');
+import sequelize from '../config/connection.js';
 
 class User extends Model {}
 
@@ -28,4 +30,4 @@ User.init(
 	}
 );
 
-module.exports = User;
+export default User;
