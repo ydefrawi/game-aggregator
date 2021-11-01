@@ -16,7 +16,6 @@ const findUsers=async()=>{
       model:Favorites
     }]
   })
-
   console.log(JSON.stringify(users, null, 4))
   return users;
 }
