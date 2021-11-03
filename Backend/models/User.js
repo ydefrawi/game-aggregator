@@ -1,7 +1,6 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const { Model, DataTypes }=require('sequelize');
-import sequelize from '../config/connection.js';
+import Sequelize from 'sequelize';
+const { Model, DataTypes }=Sequelize;
+import {sequelize} from '../config/connection.js';
 
 class User extends Model {}
 

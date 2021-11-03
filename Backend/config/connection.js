@@ -4,7 +4,7 @@ dotenv.config();
 
 // let sequelize;
 
-  const sequelize = new Sequelize(
+  export const sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
@@ -14,5 +14,3 @@ dotenv.config();
       port: 3306
     }
   );
-
-export default sequelize;
