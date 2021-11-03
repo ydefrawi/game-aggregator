@@ -1,37 +1,37 @@
 import dotenv from 'dotenv'
 import express from "express";
-import sequelize from './config/connection';
+import {sequelize} from './config/connection.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 dotenv.config();
 
-//! importing models
-import {User, Favorites, Games} from './models';
+import {router} from './controllers/index.js'
+app.use('/api',router)
 
+// //! importing models
+// import {User, Favorites, Games} from './models';
 
+// //! controller
+// const findUsers=async()=>{
+//   const users = await User.findAll({
+//     include:[{
+//       model:Favorites
+//     }]
+//   })
+//   console.log(JSON.stringify(users, null, 4))
+//   return users;
+// }
 
-//! controller
-const findUsers=async()=>{
-  const users = await User.findAll({
-    include:[{
-      model:Favorites
-    }]
-  })
-  console.log(JSON.stringify(users, null, 4))
-  return users;
-}
+// findUsers();
 
-findUsers();
+// //! API or back-end route, part of controller
+// app.use ("/users/favorites", (req, res)=>{
+//   res.json(findUsers)
+// })
 
-//! API or back-end route, part of controller
-app.use ("/users/favorites", (req, res)=>{
-  res.json(findUsers)
-})
-
-
-app.use("/", (req, res)=>{
-  res.send("<h1>Hello World</h1>")
-})
+// app.use("/", (req, res)=>{
+//   res.send("<h1>Hello World</h1>")
+// })
 
 // Start the API server
 sequelize.sync({ force: false }).then((results) => {

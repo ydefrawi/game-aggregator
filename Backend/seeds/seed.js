@@ -1,4 +1,4 @@
-import sequelize from '../config/connection.js';
+import {sequelize} from '../config/connection.js';
 
 //imported models from index 
 import {User, Favorites, Games, Reviews} from "../models/index.js"

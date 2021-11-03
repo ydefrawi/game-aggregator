@@ -20,7 +20,6 @@ Games.hasMany(Reviews, {
     foreignKey: 'game_id',
   });
 
-
 Favorites.belongsTo(User, {
     foreignKey: 'user_id'
   });
