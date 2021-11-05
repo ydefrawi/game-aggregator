@@ -21,6 +21,7 @@ import Trending from './pages/Trending';
 import GamePage from './pages/GamePage';
 import Platforms from './pages/Platforms';
 import PlatformPage from './pages/PlatformPage';
+import Signup from './pages/Signup';
 
 
 
@@ -65,6 +66,7 @@ function App() {
 					<main className={classes.main}>
 						<Route exact path={[ '/', '/home' ]} component={Home} />
 						<Route exact path={[ '/trending' ]} component={Trending} />
+						<Route exact path={[ '/signup' ]} component={Signup} />
 						<Route exact path={[ '/games/:id' ]}>
 							<GamePage apiKey={apiKey} />
 						</Route>
