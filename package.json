@@ -1,0 +1,26 @@
+{
+  "name": "game-aggregator",
+  "version": "1.0.0",
+  "description": "Game-Aggregator that demos popular/trending games for multiple platforms - with reviews, player count, ESRB Ratings, descriptions, screenshots and possibly videos/trailers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start:server": "cd Backend && npm run start",
+    "start:client": "cd Frontend && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ydefrawi/game-aggregator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ydefrawi/game-aggregator/issues"
+  },
+  "homepage": "https://github.com/ydefrawi/game-aggregator#readme",
+  "devDependencies": {
+    "concurrently": "^6.3.0"
+  }
+}
