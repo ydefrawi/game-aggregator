@@ -20,13 +20,13 @@ function Signup() {
 		event.preventDefault();
 
 		API.createUser(userName)
-		.then(document.getElementById("username-form").append(`<h1>USERNAME SAVED</h1>`))
 	};
 
 	return (
 		<div>
 			<Header header={'Sign Up'} subHeader={'Enter First and Last Name'} />
-			<form id= "username-form" onSubmit={submitHandler}>
+
+			<form onSubmit={submitHandler}>
 				<input name="firstName" label="First Name" value={userName.firstName} onChange={handleChange} />
 				<input name="lastName" label="Last Name" value={userName.lastName} onChange={handleChange} />
 				<button type="submit">Submit</button>

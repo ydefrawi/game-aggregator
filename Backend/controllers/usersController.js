@@ -8,6 +8,7 @@ export const getUsers = async (req, res)=>{
 
 export const createUser = async (req, res)=>{
     console.log(req.body)
+
     const users = await User.create(req.body);
     res.json(users)
   }
