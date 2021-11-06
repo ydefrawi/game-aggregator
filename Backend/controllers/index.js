@@ -11,6 +11,7 @@ export const router=express.Router()
 //user controllers
 router.route('/users')
     .get(user.getUsers)
+    .post(user.createUser)
 
 //game controllers
 router.route('/games')

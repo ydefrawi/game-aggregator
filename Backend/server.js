@@ -2,11 +2,18 @@ import dotenv from 'dotenv'
 import express from "express";
 import {sequelize} from './config/connection.js';
 const app = express();
+
+//middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 const PORT = process.env.PORT || 3001;
 dotenv.config();
 
 import {router} from './controllers/index.js'
 app.use('/api',router)
+
 
 // //! importing models
 // import {User, Favorites, Games} from './models';
