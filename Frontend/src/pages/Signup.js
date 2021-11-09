@@ -25,6 +25,7 @@ function Signup() {
 	return (
 		<div>
 			<Header header={'Sign Up'} subHeader={'Enter First and Last Name'} />
+
 			<form onSubmit={submitHandler}>
 				<input name="firstName" label="First Name" value={userName.firstName} onChange={handleChange} />
 				<input name="lastName" label="Last Name" value={userName.lastName} onChange={handleChange} />
