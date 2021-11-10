@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import './NavBar.css'
+import './NavBar.css';
 function NavBar() {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,11 +41,22 @@ function NavBar() {
 						</li>
 					</ul>
 					<form className="d-flex">
-						<input className="form-control me-2 search-bar" type="search" placeholder="Search" aria-label="Search" />
+						<input
+							className="form-control me-2 search-bar"
+							type="search"
+							placeholder="Search"
+							aria-label="Search"
+						/>
 						<button className="btn btn-outline-light" type="submit">
 							Search
 						</button>
 					</form>
+
+					<Link to="/signup">
+						<button type="button" className="btn btn-light">
+							Sign Up
+						</button>
+					</Link>
 				</div>
 			</div>
 		</nav>
