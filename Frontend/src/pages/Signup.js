@@ -18,7 +18,6 @@ function Signup() {
 
 	const submitHandler = (event) => {
 		event.preventDefault();
-
 		API.createUser(userName)
 	};
 

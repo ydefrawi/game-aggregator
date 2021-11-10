@@ -10,12 +10,12 @@ export const router=express.Router()
 
 //user controllers
 router.route('/users')
-    .get(user.getUsers)
-    .post(user.createUser)
+    .get(user.getUsersController)
+    .post(user.createUserController)
 
 //game controllers
 router.route('/games')
-    .get(games.getGames)
+    .get(games.getGamesController)
 
 //favorites controllers
 
