@@ -22,5 +22,8 @@
   "homepage": "https://github.com/ydefrawi/game-aggregator#readme",
   "devDependencies": {
     "concurrently": "^6.3.0"
+  },
+  "dependencies": {
+    "firebase": "^9.4.0"
   }
 }
