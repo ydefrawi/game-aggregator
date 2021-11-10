@@ -22,6 +22,7 @@ import GamePage from './pages/GamePage';
 import Platforms from './pages/Platforms';
 import PlatformPage from './pages/PlatformPage';
 import Signup from './pages/Signup';
+import Signin from './pages/Signin';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
 
@@ -85,6 +86,7 @@ function App() {
 						<Route exact path={[ '/', '/home' ]} component={Home} />
 						<Route exact path={[ '/trending' ]} component={Trending} />
 						<Route exact path={[ '/signup' ]} component={Signup} />
+						<Route exact path={[ '/signin' ]} component={Signin} />
 						<Route exact path={[ '/games/:id' ]}>
 							<GamePage apiKey={apiKey} />
 						</Route>
