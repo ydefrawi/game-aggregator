@@ -22,27 +22,30 @@ import GamePage from './pages/GamePage';
 import Platforms from './pages/Platforms';
 import PlatformPage from './pages/PlatformPage';
 import Signup from './pages/Signup';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from "firebase/analytics";
 
-// //!firebase/authentication
-// import { initializeApp } from 'firebase/app';
 
-// const firebaseConfig = {
-// 	apiKey: "AIzaSyDFrBi5Mn0nEJWLDylwApjFKBnJ6nMm7Cg",
-// 	authDomain: "game-hub-47948.firebaseapp.com",
-// 	projectId: "game-hub-47948",
-// 	storageBucket: "game-hub-47948.appspot.com",
-// 	messagingSenderId: "826278036918",
-// 	appId: "1:826278036918:web:86566c3073520152c26d17",
-// 	measurementId: "G-X9G0JR7JV9"
-//   };
+//!firebase initialization
 
-// const app = initializeApp(firebaseConfig);
+const firebaseConfig = {
+	apiKey: "AIzaSyDFrBi5Mn0nEJWLDylwApjFKBnJ6nMm7Cg",
+	authDomain: "game-hub-47948.firebaseapp.com",
+	projectId: "game-hub-47948",
+	storageBucket: "game-hub-47948.appspot.com",
+	messagingSenderId: "826278036918",
+	appId: "1:826278036918:web:86566c3073520152c26d17",
+	measurementId: "G-X9G0JR7JV9"
+  };
 
-// //!------------
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+//!------------
 
 const useStyles = makeStyles(styles);
 
-//API KEY
+//RAWG API KEY
 const apiKey = '57f00ef977554b86b26053099f4d7489';
 
 function App() {
