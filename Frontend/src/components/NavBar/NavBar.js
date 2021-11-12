@@ -57,6 +57,11 @@ function NavBar() {
 							Sign Up
 						</button>
 					</Link>
+					<Link to="/signin">
+						<button type="button" className="btn btn-light">
+							Sign In
+						</button>
+					</Link>
 				</div>
 			</div>
 		</nav>

@@ -4,6 +4,9 @@ import Header from '../components/Header/Header';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import './GamePage.css';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+
 
 
 function GamePage({ apiKey }) {
@@ -15,9 +18,29 @@ function GamePage({ apiKey }) {
 	// const classes = useStyles();
 
 	let { id } = useParams();
-	console.log('Api key', apiKey);
-	console.log('Game ID', id);
-	console.log('Game Details', gameDetails);
+	// console.log('Api key', apiKey);
+	// console.log('Game ID', id);
+	// console.log('Game Details', gameDetails);
+
+	//! This is just to test that a user is logged in, delete/refactor later
+	useEffect(() => {
+		const auth = getAuth();
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				console.log("user",user)
+				console.log(user.email + ' is signed in!')
+			  // User is signed in, see docs for a list of available properties
+			  // https://firebase.google.com/docs/reference/js/firebase.User
+			  const uid = user.uid;
+			  // ...
+			} else {
+			  // User is signed out
+			  // ...
+			}
+		  });
+		
+	}, [])
+	
 
 	useEffect(
 		() => {
@@ -68,17 +91,17 @@ function GamePage({ apiKey }) {
                     setIsLoaded(true)
                 )
 
-			console.log(gameDetails);
+			// console.log(gameDetails);
 		},
 		[ gameDetails.slug ]
 	);
 
 	return (
 		<div>
-			{console.log(gameDetails)}
+			{/* {console.log(gameDetails)}
 			{console.log(gameScreens)}
 			{console.log("gameVideos")}
-			{console.log(gameVideos)}
+			{console.log(gameVideos)} */}
 
 			<Header header={gameDetails.name} />
 
