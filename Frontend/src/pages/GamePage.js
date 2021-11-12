@@ -5,6 +5,9 @@ import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import './GamePage.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+//!jotai stuff
+import { dbUser } from '../App';
+import {useAtom} from 'jotai'
 
 
 
@@ -15,6 +18,8 @@ function GamePage({ apiKey }) {
 	const [ gameDetails, setGameDetails ] = useState([]);
 	const [ gameScreens, setGameScreens ] = useState([]);
 	const [ gameVideos, setGameVideos ] = useState([]);
+	//!jotai hook
+	const [userData, setUserData]=useAtom(dbUser)
 	// const classes = useStyles();
 
 	let { id } = useParams();
@@ -29,6 +34,9 @@ function GamePage({ apiKey }) {
 			if (user) {
 				console.log("user",user)
 				console.log(user.email + ' is signed in!')
+				//! checking for atom change
+				console.log("userData",userData)
+				
 			  // User is signed in, see docs for a list of available properties
 			  // https://firebase.google.com/docs/reference/js/firebase.User
 			  const uid = user.uid;

@@ -25,6 +25,10 @@ import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
+import {atom, useAtom } from 'jotai'
+
+//Jotai context
+export const dbUser = atom({firstName:"",lastName:"", username:"", firebaseID:""})
 
 
 //!firebase initialization
@@ -54,6 +58,7 @@ function App() {
 	const [ isOpened, setIsOpened ] = useState(true);
 
 	return (
+	
 		<Router>
 			<div className={classes.root}>
 				<NavContainer isOpened={isOpened} setIsOpened={setIsOpened} />
@@ -103,6 +108,7 @@ function App() {
 				</div>
 			</div>
 		</Router>
+	
 	);
 }
 
