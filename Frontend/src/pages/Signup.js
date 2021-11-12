@@ -6,8 +6,18 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 // import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import './Signup.css';
+import { atom, useAtom } from 'jotai';
+import { dbUser } from '../App.js';
 
 function Signup() {
+	const [ userData, setUserData ] = useAtom(dbUser);
+	// console.log('Jotai User', user);
+
+	// useEffect(() => {
+	// 	setUser({ firstName: 'Bob', lastName: 'Saget' });
+	// 	console.log('Changed Jotai User', user);
+	// }, []);
+
 	const [ userCreds, setUserCreds ] = useState({
 		email: '',
 		password: '',
@@ -15,7 +25,6 @@ function Signup() {
 		firstName: '',
 		lastName: ''
 	});
-
 
 	const handleChange = (event) => {
 		event.preventDefault();
@@ -27,14 +36,24 @@ function Signup() {
 
 	const submitHandler = async (event) => {
 		event.preventDefault();
-		//! creates user in Firebase, awaits response then adds the other profile fields to our DB
+		// creates user in Firebase, awaits response then adds the other profile fields to our DB
 		const auth = getAuth();
 		try {
 			const userCredential = await createUserWithEmailAndPassword(auth, userCreds.email, userCreds.password);
 			// Signed in
 			const user = userCredential.user;
 			console.log('firebase user', user);
-			await API.createUser({ firebaseId: user.uid, username: userCreds.username, firstName:userCreds.firstName, lastName:userCreds.lastName});
+			await API.createUser({
+				firebaseId: user.uid,
+				username: userCreds.username,
+				firstName: userCreds.firstName,
+				lastName: userCreds.lastName
+			})
+			//!trying to write to jotai atom here
+				.then((response) => {
+					setUserData(response.data);
+				})
+
 			// ...
 		} catch (error) {
 			const errorCode = error.code;
@@ -43,11 +62,11 @@ function Signup() {
 			console.log(errorMessage);
 		}
 
-		//!----------------------------------------------------------------
 	};
 
 	return (
 		<div>
+		{console.log("atom in return",userData)}
 			<Header header={'Sign Up'} subHeader={'Enter Credentials'} />
 			<div className="container d-flex " id="signup-container">
 				<div className="col-6 justify-content-start" id="signup-field-col">
@@ -105,8 +124,10 @@ function Signup() {
 							value={userCreds.password}
 							onChange={handleChange}
 						/>
-						<br/>
-						<button className="btn btn-light" type="submit">Submit</button>
+						<br />
+						<button className="btn btn-light" type="submit">
+							Submit
+						</button>
 					</form>
 				</div>
 

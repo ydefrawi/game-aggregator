@@ -24,6 +24,7 @@
     "concurrently": "^6.3.0"
   },
   "dependencies": {
-    "firebase": "^9.4.0"
+    "firebase": "^9.4.0",
+    "jotai": "^1.4.3"
   }
 }
