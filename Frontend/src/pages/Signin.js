@@ -2,45 +2,41 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/Header';
 import API from '../utils/API.js';
 //imports from firebase
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from "firebase/analytics";
-
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 function Signin() {
-	const [ userName, setUserName ] = useState({
+	const [ userCreds, setUserCreds ] = useState({
 		email: '',
 		password: ''
 	});
-
-//!firebase config
-
-const firebaseConfig = {
-	apiKey: 'AIzaSyDFrBi5Mn0nEJWLDylwApjFKBnJ6nMm7Cg',
-	authDomain: 'game-hub-47948.firebaseapp.com',
-	projectId: 'game-hub-47948',
-	storageBucket: 'game-hub-47948.appspot.com',
-	messagingSenderId: '826278036918',
-	appId: '1:826278036918:web:86566c3073520152c26d17',
-	measurementId: 'G-X9G0JR7JV9'
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-//!------------
 
 	const handleChange = (event) => {
 		event.preventDefault();
 		const name = event.target.name;
 		const value = event.target.value;
-		setUserName((values) => ({ ...values, [name]: value }));
-		console.log(userName);
+		setUserCreds((values) => ({ ...values, [name]: value }));
+		console.log(userCreds);
 	};
 
 	const submitHandler = (event) => {
 		event.preventDefault();
-		API.createUser(userName);
+		const auth = getAuth();
+//!firebase sign in stuff
+		signInWithEmailAndPassword(auth, userCreds.email, userCreds.password)
+			.then((userCredential) => {
+				// Signed in
+				const user = userCredential.user;
+				console.log("user", user)
+				// ...
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log("errorCode", errorCode)
+				console.log("errorMessage", errorMessage)
+			});
 	};
+//!firebase sign in stuff-------------------------
 
 	return (
 		<div>
@@ -51,15 +47,15 @@ const analytics = getAnalytics(app);
 					name="email"
 					label="email"
 					placeholder="Enter Email"
-					value={userName.firstName}
+					value={userCreds.firstName}
 					onChange={handleChange}
 				/>
 				<input
 					name="password"
 					label="password"
-                    type="password"
+					type="password"
 					placeholder="Enter Password"
-					value={userName.lastName}
+					value={userCreds.lastName}
 					onChange={handleChange}
 				/>
 				<button type="submit">Submit</button>

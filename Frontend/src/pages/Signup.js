@@ -8,7 +8,7 @@ import { getAnalytics } from "firebase/analytics";
 
 
 function Signup() {
-	const [ userName, setUserName ] = useState({
+	const [ userCreds, setUserCreds ] = useState({
 		email: '',
 		password: ''
 	});
@@ -17,8 +17,8 @@ function Signup() {
 		event.preventDefault();
 		const name = event.target.name;
 		const value = event.target.value;
-		setUserName((values) => ({ ...values, [name]: value }));
-		console.log(userName);
+		setUserCreds((values) => ({ ...values, [name]: value }));
+		console.log(userCreds);
 	};
 
 	const submitHandler = (event) => {
@@ -26,7 +26,7 @@ function Signup() {
 //! firebase create user
 		const auth = getAuth();
 
-		createUserWithEmailAndPassword(auth, userName.email, userName.password)
+		createUserWithEmailAndPassword(auth, userCreds.email, userCreds.password)
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
@@ -41,7 +41,7 @@ function Signup() {
 				// ..
 			});
 //!----------------------------------------------------------------
-		API.createUser(userName);
+		API.createUser(userCreds);
 	};
 
 	return (
@@ -53,7 +53,7 @@ function Signup() {
 					name="email"
 					label="email"
 					placeholder="Enter Email"
-					value={userName.email}
+					value={userCreds.email}
 					onChange={handleChange}
 				/>
 				<input
@@ -61,7 +61,7 @@ function Signup() {
 					label="password"
                     type="password"
 					placeholder="Enter Password"
-					value={userName.password}
+					value={userCreds.password}
 					onChange={handleChange}
 				/>
 				<button type="submit">Submit</button>
