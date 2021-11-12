@@ -27,7 +27,7 @@ User.init(
 		},
 		firebaseId: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: true
 		}
 	},
 	{
