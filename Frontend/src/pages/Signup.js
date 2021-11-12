@@ -24,7 +24,7 @@ function Signup() {
 
 	const submitHandler = async (event) => {
 		event.preventDefault();
-//! firebase create user
+//! creates user in Firebase, awaits response then adds the other profile fields to our DB
 		const auth = getAuth();
 		try {
 		const userCredential = 
