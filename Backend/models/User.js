@@ -15,9 +15,17 @@ User.init(
 		},
 		firstName: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: true
 		},
 		lastName: {
+			type: DataTypes.STRING,
+			allowNull: true
+		},
+		username: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		firebaseId: {
 			type: DataTypes.STRING,
 			allowNull: false
 		}
