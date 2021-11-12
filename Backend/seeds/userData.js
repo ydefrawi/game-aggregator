@@ -1,23 +1,28 @@
 const userData = [
     {
       "firstName": "Sal",
-      "lastName": "Vulcano"
+      "lastName": "Vulcano",
+      "username": "SalV"
     },
     {
       "firstName": "Bob",
-      "lastName": "Ross"
+      "lastName": "Ross",
+      "username": "FriendlyClouds"
     },
     {
       "firstName": "Tobias",
-      "lastName": "Funke"
+      "lastName": "Funke",
+      "username": "Nevernude"
     },
     {
       "firstName": "Bojack",
-      "lastName": "Horseman"
+      "lastName": "Horseman",
+      "username": "LifeSucks"
     },
     {
       "firstName": "George",
-      "lastName": "Costanza"
+      "lastName": "Costanza",
+      "username": "byMENNEN"
     }
   ]
 

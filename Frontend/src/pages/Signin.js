@@ -3,6 +3,7 @@ import Header from '../components/Header/Header';
 import API from '../utils/API.js';
 //imports from firebase
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { FormLabel } from '@material-ui/core';
 
 function Signin() {
 	const [ userCreds, setUserCreds ] = useState({
@@ -43,6 +44,8 @@ function Signin() {
 			<Header header={'Sign In'} subHeader={'Sign in with email and password'} />
 
 			<form onSubmit={submitHandler}>
+			<label for="email">Email</label>
+
 				<input
 					name="email"
 					label="email"
@@ -50,6 +53,7 @@ function Signin() {
 					value={userCreds.firstName}
 					onChange={handleChange}
 				/>
+				<label for="password">Password</label>
 				<input
 					name="password"
 					label="password"

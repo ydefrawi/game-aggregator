@@ -10,7 +10,8 @@ import { getAnalytics } from "firebase/analytics";
 function Signup() {
 	const [ userCreds, setUserCreds ] = useState({
 		email: '',
-		password: ''
+		password: '',
+		username:'',
 	});
 
 	const handleChange = (event) => {
@@ -21,27 +22,26 @@ function Signup() {
 		console.log(userCreds);
 	};
 
-	const submitHandler = (event) => {
+	const submitHandler = async (event) => {
 		event.preventDefault();
-//! firebase create user
+//! creates user in Firebase, awaits response then adds the other profile fields to our DB
 		const auth = getAuth();
-
-		createUserWithEmailAndPassword(auth, userCreds.email, userCreds.password)
-			.then((userCredential) => {
+		try {
+		const userCredential = 
+		await createUserWithEmailAndPassword(auth, userCreds.email, userCreds.password)
 				// Signed in
 				const user = userCredential.user;
                 console.log("firebase user", user)
+				await API.createUser({firebaseId:user.uid, username:userCreds.username});
 				// ...
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-                console.log(errorCode)
-                console.log(errorMessage)
-				// ..
-			});
+		} catch (error) {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			console.log(errorCode)
+			console.log(errorMessage)
+		}
+		
 //!----------------------------------------------------------------
-		API.createUser(userCreds);
 	};
 
 	return (
@@ -49,6 +49,7 @@ function Signup() {
 			<Header header={'Sign Up'} subHeader={'Enter Email and Password'} />
 
 			<form onSubmit={submitHandler}>
+			<label for="email">Email</label>
 				<input
 					name="email"
 					label="email"
@@ -56,12 +57,23 @@ function Signup() {
 					value={userCreds.email}
 					onChange={handleChange}
 				/>
+				<label for="password">Password</label>
 				<input
 					name="password"
 					label="password"
                     type="password"
 					placeholder="Enter Password"
 					value={userCreds.password}
+					onChange={handleChange}
+				/>
+				<br/>
+				<label for="username">User Name</label>
+				<input
+					name="username"
+					label="username"
+                    type="text"
+					placeholder="Enter User Name"
+					value={userCreds.username}
 					onChange={handleChange}
 				/>
 				<button type="submit">Submit</button>
