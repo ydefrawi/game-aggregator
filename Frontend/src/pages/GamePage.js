@@ -28,26 +28,30 @@ function GamePage({ apiKey }) {
 	// console.log('Game Details', gameDetails);
 
 	//! This is just to test that a user is logged in, delete/refactor later
-	useEffect(() => {
-		const auth = getAuth();
-		onAuthStateChanged(auth, (user) => {
-			if (user) {
-				console.log("user",user)
-				console.log(user.email + ' is signed in!')
-				//! checking for atom change
-				console.log("userData",userData)
+	// useEffect(() => {
+	// 	const auth = getAuth();
+	// 	onAuthStateChanged(auth, (user) => {
+	// 		if (user) {
+	// 			console.log("user",user)
+	// 			console.log(user.email + ' is signed in!')
+	// 			//! checking for atom change
+	// 			console.log("userData",userData)
 				
-			  // User is signed in, see docs for a list of available properties
-			  // https://firebase.google.com/docs/reference/js/firebase.User
-			  const uid = user.uid;
-			  // ...
-			} else {
-			  // User is signed out
-			  // ...
-			}
-		  });
+	// 		  // User is signed in, see docs for a list of available properties
+	// 		  // https://firebase.google.com/docs/reference/js/firebase.User
+	// 		  const uid = user.uid;
+	// 		  // ...
+	// 		} else {
+	// 		  // User is signed out
+	// 		  // ...
+	// 		}
+	// 	  });
 		
-	}, [])
+	// }, [])
+
+	useEffect(() => {
+		console.log(userData)
+	}, [userData])
 	
 
 	useEffect(

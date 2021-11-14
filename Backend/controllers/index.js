@@ -13,6 +13,9 @@ router.route('/users')
     .get(user.getUsersController)
     .post(user.createUserController)
 
+router.route('/users/:id')
+    .get(user.findUserByFbId)
+
 //game controllers
 router.route('/games')
     .get(games.getGamesController)

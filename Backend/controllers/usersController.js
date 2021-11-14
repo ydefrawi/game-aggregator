@@ -11,3 +11,13 @@ export const createUserController = async (req, res)=>{
     const users = await User.create(req.body);
     res.json(users)
   }
+
+export const findUserByFbId = async (req, res) =>{
+  const searchTerm = req.params
+  const userInfo = await User.findOne({
+    where: {
+      firebaseId : searchTerm.id
+    }
+  })
+  res.json(userInfo)
+}

@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -23,9 +23,11 @@ import Platforms from './pages/Platforms';
 import PlatformPage from './pages/PlatformPage';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
 import {atom, useAtom } from 'jotai'
+import API from './utils/API';
 
 //Jotai context
 export const dbUser = atom({firstName:"",lastName:"", username:"", firebaseID:""})
@@ -56,6 +58,28 @@ const apiKey = '57f00ef977554b86b26053099f4d7489';
 function App() {
 	const classes = useStyles();
 	const [ isOpened, setIsOpened ] = useState(true);
+	const [userData, setUserData] = useAtom(dbUser)
+
+
+	// Attempt to set dbUser Atom with firebase 
+	// Call to DB working but state isnt passed to children
+	useEffect(() => {
+		const auth = getAuth();
+		onAuthStateChanged(auth, async (user) => {
+		  if (user) {
+			console.log(user)
+			const uid = user.uid;
+			await API.getUser(uid).then(res => setUserData(res.data))			// ...
+		  } else {
+			// User is signed out
+			// ...
+		  }
+		});		
+	}, [])
+
+	useEffect(() => {
+		console.log(userData)
+	}, [userData])
 
 	return (
 	
