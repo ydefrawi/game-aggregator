@@ -11,5 +11,8 @@ export default {
         },
         getUser: function (userData){
             return axios.get("api/users/"+userData)
+        },
+        setFavorite: function (favoriteData){
+            return axios.post("api/favorites", favoriteData)
         }
 }

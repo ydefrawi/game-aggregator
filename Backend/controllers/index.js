@@ -1,6 +1,7 @@
 import express from "express";
 import * as user from "./usersController.js"
 import * as games from "./gamesController.js"
+import * as favorites from "./favoritesController.js"
 export const router=express.Router()
 
 
@@ -21,6 +22,13 @@ router.route('/games')
     .get(games.getGamesController)
 
 //favorites controllers
+router.route('/favorites')
+    .post(favorites.createFavoritesController)
+    .delete(favorites.removeFavorites)
+
+router.route('/favorites/user/:id')
+    .get(favorites.usersFavorites)
+
 
 //reviews controllers
 

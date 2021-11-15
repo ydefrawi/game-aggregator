@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import {Link} from 'react-router-dom'
-import './GameCard2.css'
+import {Link} from 'react-router-dom';
+import './GameCard2.css';
+import API from '../../utils/API';
+import { dbUser } from '../../App';
+import {useAtom} from 'jotai'
 
 // const key = '57f00ef977554b86b26053099f4d7489';
 
@@ -14,6 +17,7 @@ function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
 	const [ error, setError ] = useState(null);
 	const [ isLoaded, setIsLoaded ] = useState(false);
 	const [ gameDetails, setGameDetails ] = useState([]);
+	const [userData, setUserData]=useAtom(dbUser)
 
 	useEffect(() => {
 		fetch(`https://api.rawg.io/api/games/${gameID}?key=${apiKey}`)
@@ -32,6 +36,16 @@ function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
 				}
 			);
 	}, []);
+
+	const setAsFavorite = () => {
+		const favoriteData = {
+			game_id: gameDetails.id,
+			name: gameDetails.name,
+			user_id: userData.id
+		}
+		console.log(favoriteData)
+		API.setFavorite(favoriteData)
+	}
 
 // Function that pushes all the game's platforms into an array and adds a comma/space
 // between them
@@ -76,7 +90,7 @@ const starRating = () =>{
 							<a href="#" class="fa fa-bookmark-o" />
 						</li>
 						<li>
-							<a href="#" class="fa fa-heart-o">
+							<a href="#" class="fa fa-heart-o" onClick = {setAsFavorite}>
 								<span>18</span>
 							</a>
 						</li>
