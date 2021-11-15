@@ -58,8 +58,8 @@ const starRating = () =>{
 
 	return (
 		<div class="example-2 game-card">
-			{console.log("gameDetails" , gameDetails)}
-			{console.log(starRating())}
+			{/* {console.log("gameDetails" , gameDetails)}
+			{console.log(starRating())} */}
 
 			<div
 				class="wrapper"
