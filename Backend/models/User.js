@@ -8,10 +8,10 @@ class User extends Model {}
 User.init(
 	{
 		id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 			allowNull: false,
 			primaryKey: true,
-			autoIncrement: true
+			// autoIncrement: true
 		},
 		firstName: {
 			type: DataTypes.STRING,
@@ -24,11 +24,11 @@ User.init(
 		username: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		firebaseId: {
-			type: DataTypes.STRING,
-			allowNull: true
 		}
+		// firebaseId: {
+		// 	type: DataTypes.STRING,
+		// 	allowNull: true
+		// }
 	},
 	{
 		sequelize,
