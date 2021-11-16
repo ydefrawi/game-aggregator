@@ -24,11 +24,13 @@ router.route('/games')
 //favorites controllers
 router.route('/favorites')
     .post(favorites.createFavoritesController)
-    .delete(favorites.removeFavorites)
+    .put(favorites.removeFavorites)
 
 router.route('/favorites/user/:id')
     .get(favorites.usersFavorites)
 
+router.route('/favorites/games/:id')
+    .get(favorites.getGameFavorites)
 
 //reviews controllers
 
