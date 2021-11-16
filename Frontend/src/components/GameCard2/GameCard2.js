@@ -8,10 +8,8 @@ import {useAtom} from 'jotai'
 
 // const key = '57f00ef977554b86b26053099f4d7489';
 
-function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
+function GameCard2({apiKey, gameID}) {
 // !IMPORTANT: HIDE API KEY
-	const background = image;
-	const dateString = new Date(released).toDateString();
 	let platArray = [];
 	
 	const [ error, setError ] = useState(null);
@@ -20,6 +18,7 @@ function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
 	const [userData, setUserData]=useAtom(dbUser)
 	const [favorites, setFavorites] = useState([])
 	const [isFavorite, setIsFavorite] = useState(false)
+	const dateString = new Date(gameDetails.released).toDateString();
 
 	useEffect(() => {
 		fetch(`https://api.rawg.io/api/games/${gameID}?key=${apiKey}`)
@@ -89,7 +88,7 @@ gameDetails?.parent_platforms?.map((item=>(
 
 const starRating = () =>{
 		const starTotal=5;
-		const starPercentage = (rating/starTotal)*100;
+		const starPercentage = (gameDetails.rating/starTotal)*100;
 		const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
 		return starPercentageRounded;
 }
@@ -107,7 +106,7 @@ const starRating = () =>{
 			<div
 				class="wrapper"
 				style={{
-					backgroundImage: `url(${background})`,
+					backgroundImage: `url(${gameDetails.background_image})`,
 					backgroundRepeat: 'no-repeat',
 					backgroundSize: 'cover'
 				}}
@@ -119,7 +118,7 @@ const starRating = () =>{
 							<a href="#" class="fa fa-bookmark-o" />
 						</li>
 						<li>
-							<a href="#" class="fa fa-heart-o" onClick = {toggleFavorite}>
+							<a id= "david" href="#" class="fa fa-heart-o" onClick = {toggleFavorite}>
 								<span>{favorites.length}</span>
 							</a>
 						</li>
@@ -132,7 +131,7 @@ const starRating = () =>{
 				</div>
 				<div class="data">
 					<div class="content">
-						<span class="author">{name}</span>
+						<span class="author">{gameDetails.name}</span>
 						<h1 class="title">
 							<p class="stars-outer">
 							<div class="stars-inner" style={{width:starRating()}}></div>
