@@ -23,12 +23,16 @@ import Platforms from './pages/Platforms';
 import PlatformPage from './pages/PlatformPage';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
+import UserProfile from './pages/UserProfile';
+
+//Firebase
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
+
+//Jotai
 import {atom, useAtom } from 'jotai'
 import API from './utils/API';
-
 //Jotai context
 export const dbUser = atom({firstName:"",lastName:"", username:"", firebaseID:""})
 
@@ -116,6 +120,9 @@ function App() {
 						<Route exact path={[ '/trending' ]} component={Trending} />
 						<Route exact path={[ '/signup' ]} component={Signup} />
 						<Route exact path={[ '/signin' ]} component={Signin} />
+						<Route exact path={[ '/profile' ]} >
+							<UserProfile apiKey={apiKey}/>
+						</Route>
 						<Route exact path={[ '/games/:id' ]}>
 							<GamePage apiKey={apiKey} />
 						</Route>
