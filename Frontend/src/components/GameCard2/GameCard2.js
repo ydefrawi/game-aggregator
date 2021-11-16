@@ -55,6 +55,14 @@ function GameCard2({apiKey, gameID}) {
 				})
 	}, [gameDetails])
 
+//test - gets all user's favorites
+useEffect(() => {
+	API.getUserFavorites(userData.id)
+	.then(res=> {
+		console.log("Users Favorites", res.data)
+	})
+
+}, [userData])
 //toggleFavorite switches between adding and removing favorite based on status of "isFavorite." Adds and removes current user from "favorites" list.
 
 	const toggleFavorite = (e) => {

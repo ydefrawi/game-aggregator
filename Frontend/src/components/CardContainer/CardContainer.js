@@ -9,6 +9,7 @@ function CardContainer({gameData, apiKey}) {
 		<section id="card-section" className="container-fluid">
 			{/* ROW */}
 			<div className="cards-row">
+			{console.log("game data",gameData)}
 				{/* Card Start */}
 				<span id="card-map">
 					{gameData?.results?.map((item) => (
