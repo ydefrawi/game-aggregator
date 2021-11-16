@@ -18,6 +18,8 @@ function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
 	const [ isLoaded, setIsLoaded ] = useState(false);
 	const [ gameDetails, setGameDetails ] = useState([]);
 	const [userData, setUserData]=useAtom(dbUser)
+	const [favorites, setFavorites] = useState([])
+	const [isFavorite, setIsFavorite] = useState(false)
 
 	useEffect(() => {
 		fetch(`https://api.rawg.io/api/games/${gameID}?key=${apiKey}`)
@@ -35,16 +37,43 @@ function GameCard2({apiKey, gameID, key, name, rating, released, image}) {
 					setError(error);
 				}
 			);
-	}, []);
+		}, []);
 
-	const setAsFavorite = () => {
+//Use effect pulls all favorites and checks to see if currently logged in user has favorited game. Waits for game details before firing
+		
+		useEffect(() =>{
+			API.getGameFavorites(gameDetails.id)
+				.then(res => {
+					if(res.data){
+						const favoriteList = res.data
+						setFavorites(favoriteList)
+						favoriteList.forEach(favorite => {
+							if(favorite.user_id === userData.id){
+								setIsFavorite(true)
+							}
+						});
+					}
+				})
+	}, [gameDetails])
+
+//toggleFavorite switches between adding and removing favorite based on status of "isFavorite." Adds and removes current user from "favorites" list.
+
+	const toggleFavorite = (e) => {
+		e.preventDefault()
 		const favoriteData = {
 			game_id: gameDetails.id,
 			name: gameDetails.name,
 			user_id: userData.id
 		}
-		console.log(favoriteData)
-		API.setFavorite(favoriteData)
+		if(!isFavorite){
+			API.setFavorite(favoriteData)
+				.then(res => setFavorites([...favorites, res.data]))
+			setIsFavorite(true)
+		}else{
+			API.deleteFavorite(favoriteData)
+			setIsFavorite(false)
+			setFavorites(favorites.filter(data => data.user_id !== userData.id))
+		}
 	}
 
 // Function that pushes all the game's platforms into an array and adds a comma/space
@@ -90,8 +119,8 @@ const starRating = () =>{
 							<a href="#" class="fa fa-bookmark-o" />
 						</li>
 						<li>
-							<a href="#" class="fa fa-heart-o" onClick = {setAsFavorite}>
-								<span>18</span>
+							<a href="#" class="fa fa-heart-o" onClick = {toggleFavorite}>
+								<span>{favorites.length}</span>
 							</a>
 						</li>
 						<li>

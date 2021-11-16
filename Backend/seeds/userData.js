@@ -22,7 +22,8 @@ const userData = [
     {
       "firstName": "George",
       "lastName": "Costanza",
-      "username": "byMENNEN"
+      "username": "byMENNEN",
+      "firebaseId": "W1gTrfdWKldHMzhLkeUxCgKERp53",
     }
   ]
 

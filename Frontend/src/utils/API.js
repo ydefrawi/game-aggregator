@@ -12,7 +12,13 @@ export default {
         getUser: function (userData){
             return axios.get("api/users/"+userData)
         },
+        getGameFavorites: function (gameData){
+            return axios.get("api/favorites/games/"+gameData)
+        },
         setFavorite: function (favoriteData){
             return axios.post("api/favorites", favoriteData)
+        },
+        deleteFavorite: function(favoriteData){
+            return axios.put("api/favorites", favoriteData)
         }
 }
