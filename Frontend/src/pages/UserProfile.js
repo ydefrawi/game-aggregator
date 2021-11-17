@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { atom, useAtom } from 'jotai';
+import { dbUser } from '../App';
+import API from '../utils/API';
+//components
+import FavoritesCard from '../components/FavoritesCard/FavoritesCard';
 import Header from '../components/Header/Header';
-import {atom, useAtom} from 'jotai'
-import './UserProfile.css'
-import {dbUser} from '../App'
-import API from '../utils/API'
-import CardContainer from '../components/CardContainer/CardContainer'
+
+import './UserProfile.css';
 
 function UserProfile({ apiKey }) {
 	const [ error, setError ] = useState(null);
 	const [ isLoaded, setIsLoaded ] = useState(false);
-    const [userData, setUserData]=useAtom(dbUser)
-    const [userFavorites, setUserFavorites]=useState([])
+	const [ userData, setUserData ] = useAtom(dbUser);
+	const [ userFavorites, setUserFavorites ] = useState([]);
 
 	// useEffect(() => {
 	// 	fetch(`https://api.rawg.io/api/platforms?key=${apiKey}`)
@@ -29,32 +31,34 @@ function UserProfile({ apiKey }) {
 	// 		);
 	// }, []);
 
-    useEffect(() => {
-        console.log(userData)
-        API.getUserFavorites(userData.id)
-        .then(res=> {
-            setUserFavorites(res.data)
-        })
-    
-    }, [userData])
+	useEffect(
+		() => {
+			console.log(userData);
+			API.getUserFavorites(userData.id).then((res) => {
+				setUserFavorites(res.data);
+			});
+		},
+		[ userData ]
+	);
 
 	return (
 		<div>
-    
 			<Header header={'User Profile'} subHeader={'Your Profile'} />
-                Your Favorites: 
-            {/* <CardContainer gameData={userFavorites} apiKey={apiKey}/> */}
-            <div id="favorite-map">
-                {userFavorites?.map((item) =>(
-                    <p>
-                    {item.game_id}
+			<h4>Your Games:</h4>
 
-
-                    </p>
-                ))}
-            </div>
-            {console.log("User Favorites", userFavorites )}
-                
+			<div className="row align-items-center horizontal-container" id="favorites-container">
+				<div className="row d-flex" id="favorites-title"> Your Favorites </div>
+            {/* Mapping over favorites, passing in game_id as prop */}
+            {userFavorites.map((item)=>(
+               <div className="col fav-cards" id="">
+                {console.log("user favorites", userFavorites)}
+					<FavoritesCard 
+                        gameId={item.game_id}
+                    />
+				</div>
+            ))}
+				
+			</div>
 		</div>
 	);
 }
