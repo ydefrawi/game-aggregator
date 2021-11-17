@@ -2,6 +2,7 @@ import express from "express";
 import * as user from "./usersController.js"
 import * as games from "./gamesController.js"
 import * as favorites from "./favoritesController.js"
+import * as reviews from "./reviewsController.js"
 export const router=express.Router()
 
 
@@ -33,4 +34,5 @@ router.route('/favorites/games/:id')
     .get(favorites.getGameFavorites)
 
 //reviews controllers
-
+router.route('/game/review/')
+    .post(reviews.addReviewController)

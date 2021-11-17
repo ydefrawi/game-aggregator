@@ -11,7 +11,9 @@ export const createFavoritesController = async (req, res) =>{
         }
     })
     const favorite = await Favorites.create(req.body)
-    res.json(favorite)
+    res.json(favorite)  
+
+
 }
 
 export const removeFavorites = async (req,res) =>{
