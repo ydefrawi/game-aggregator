@@ -1,4 +1,8 @@
+.favorites-img{
 
+    max-height:7em;
+    object-fit: contain;
+}
 
 .profile-card-2 {
     max-width: 200px;
