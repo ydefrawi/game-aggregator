@@ -8,6 +8,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 //!jotai stuff
 import { dbUser } from '../App';
 import { useAtom } from 'jotai'
+import API from '../utils/API';
 
 
 
@@ -96,7 +97,12 @@ function GamePage({ apiKey }) {
 	function handleSubmit(event){
 		event.preventDefault();
 		// mock up of what we'll be passing into our req.body:
-		alert("Review: "+ currentReview + "\nUser Id: " + userData.id + "\nGame Id: " + id);
+		API.addReview({
+			game_id:id,
+			review:currentReview,
+			user_id:userData.id
+		})
+		alert("REVIEW ADDED TO REVIEWS TABLE"+"\nReview: "+ currentReview + "\nUser Id: " + userData.id + "\nGame Id: " + id);
 	}
 
 
