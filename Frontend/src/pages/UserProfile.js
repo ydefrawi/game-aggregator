@@ -8,7 +8,7 @@ import Header from '../components/Header/Header';
 
 import './UserProfile.css';
 
-function UserProfile({ apiKey }) {
+function UserProfile({apiKey}) {
 	const [ error, setError ] = useState(null);
 	const [ isLoaded, setIsLoaded ] = useState(false);
 	const [ userData, setUserData ] = useAtom(dbUser);
@@ -54,6 +54,7 @@ function UserProfile({ apiKey }) {
                 {console.log("user favorites", userFavorites)}
 					<FavoritesCard 
                         gameId={item.game_id}
+						apiKey={apiKey}
                     />
 				</div>
             ))}
