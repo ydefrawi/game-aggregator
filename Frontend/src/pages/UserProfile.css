@@ -1,0 +1,13 @@
+.horizontal-container{
+    background-color:black;
+    height:200px;
+    border-radius:15px;
+    width:90%;
+    margin-left:20px;
+}
+
+
+
+#favorites-title{
+    margin-left:20px;
+}
