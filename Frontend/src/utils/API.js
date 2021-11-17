@@ -28,5 +28,8 @@ export default {
         //removes a user's favorite from favorites table using a PUT
         deleteFavorite: function(favoriteData){
             return axios.put("api/favorites", favoriteData)
+        },
+        addReview:function(reviewData){
+            return axios.post("api/game/review", reviewData)
         }
 }
