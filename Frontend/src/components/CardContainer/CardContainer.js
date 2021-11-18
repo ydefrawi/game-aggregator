@@ -17,10 +17,6 @@ function CardContainer({gameData, apiKey}) {
 							gameID={item.id}
 							apiKey={apiKey}
 							key={item.id}
-							name={item.name}
-							rating={item.rating}
-							released={item.released}
-							image={item.background_image}
 						/>
 					))}
 				</span>

@@ -5,8 +5,57 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import { useAtom } from 'jotai';
+import { dbUser } from '../../App';
+import {getAuth, signOut} from 'firebase/auth';
 import './NavBar.css';
+import { onAuthStateChanged } from '@firebase/auth';
 function NavBar() {
+	const [userData, setUserData] = useAtom(dbUser)
+
+	
+	const signUserOut = () =>{
+		const auth = getAuth();
+		signOut(auth).then(() => {
+		// Sign-out successful.
+		setUserData({firstName:"",lastName:"", username:"", firebaseId:""})
+		}).catch((error) => {
+		// An error happened.
+		});
+	}
+
+	function signedInButtons() {
+		if (userData.username === ""){
+			return (
+			<>
+			<Link to="/signup">
+				<button type="button" className="btn btn-light">
+					Sign Up
+				</button>
+			</Link>
+			<Link to="/signin">
+				<button type="button" className="btn btn-light">
+					Sign In
+				</button>
+			</Link>
+		</>)
+		} else {
+			return(
+			<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			  {userData.username}
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			  <li><Link to = "/profile"> <a class="dropdown-item" href="#">My Profile</a></Link></li>
+			  <li><a class="dropdown-item" href="#">Another action</a></li>
+			  <li><hr class="dropdown-divider"/></li>
+			  <li><a onClick = {signUserOut} class="dropdown-item" href="#">Sign Out</a></li>
+			</ul>
+		  </div>
+			)
+		}
+	}
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div className="container-fluid">
@@ -51,17 +100,7 @@ function NavBar() {
 							Search
 						</button>
 					</form>
-
-					<Link to="/signup">
-						<button type="button" className="btn btn-light">
-							Sign Up
-						</button>
-					</Link>
-					<Link to="/signin">
-						<button type="button" className="btn btn-light">
-							Sign In
-						</button>
-					</Link>
+					{signedInButtons()}
 				</div>
 			</div>
 		</nav>
