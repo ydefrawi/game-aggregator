@@ -30,7 +30,10 @@ function FavoritesCard({gameId, apiKey}) {
 							src={gameDetails?.background_image}
 							class="img img-responsive favorites-img"
 						/>
-						<div class="profile-name">{gameDetails?.name}</div>
+						<a href={`games/${gameId}`}>
+							<div class="profile-name">{gameDetails?.name}
+							</div></a>
+					
 						<div class="profile-username"></div>
 					</div>
 				</div>
