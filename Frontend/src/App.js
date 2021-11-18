@@ -34,7 +34,7 @@ import { getAnalytics } from "firebase/analytics";
 import {atom, useAtom } from 'jotai'
 import API from './utils/API';
 //Jotai context
-export const dbUser = atom({firstName:"",lastName:"", username:"", firebaseID:""})
+export const dbUser = atom({firstName:"",lastName:"", username:"", firebaseId:""})
 
 
 //!firebase initialization
@@ -73,10 +73,9 @@ function App() {
 		  if (user) {
 			console.log(user)
 			const uid = user.uid;
-			await API.getUser(uid).then(res => setUserData(res.data))			// ...
+			await API.getUser(uid).then(res => setUserData(res.data))
 		  } else {
-			// User is signed out
-			// ...
+			  //user is not signed in
 		  }
 		});		
 	}, [])
@@ -89,7 +88,7 @@ function App() {
 	
 		<Router>
 			<div className={classes.root}>
-				<NavContainer isOpened={isOpened} setIsOpened={setIsOpened} />
+				<NavContainer isOpened={isOpened} userData={userData} setIsOpened={setIsOpened} />
 				<Toolbar />
 				<div className={classes.container}>
 					<Drawer
