@@ -35,6 +35,7 @@ import {atom, useAtom } from 'jotai'
 import API from './utils/API';
 //Jotai context
 export const dbUser = atom({firstName:"",lastName:"", username:"", firebaseId:""})
+export const authAtom = atom(null);
 
 
 //!firebase initialization
@@ -63,7 +64,7 @@ function App() {
 	const classes = useStyles();
 	const [ isOpened, setIsOpened ] = useState(true);
 	const [userData, setUserData] = useAtom(dbUser)
-
+	const [authUser, setAuthUser] = useAtom(authAtom);
 
 	// Attempt to set dbUser Atom with firebase 
 	// Call to DB working but state isnt passed to children
@@ -73,8 +74,14 @@ function App() {
 		  if (user) {
 			console.log(user)
 			const uid = user.uid;
-			await API.getUser(uid).then(res => setUserData(res.data))
+			localStorage.setItem('authUser',JSON.stringify(user))
+			setAuthUser(user)
+			await API.getUser(uid).then((res) => {
+				setUserData(res.data)
+			})
 		  } else {
+				localStorage.removeItem('authUser')
+				setAuthUser(null)
 			  //user is not signed in
 		  }
 		});		

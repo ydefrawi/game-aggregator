@@ -7,11 +7,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { useAtom } from 'jotai';
 import { dbUser } from '../../App';
+import { authAtom } from '../../App';
 import {getAuth, signOut} from 'firebase/auth';
 import './NavBar.css';
 import { onAuthStateChanged } from '@firebase/auth';
 function NavBar() {
 	const [userData, setUserData] = useAtom(dbUser)
+	// const [authUser, setAuthUser] = useAtom(authAtom)
+	const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('authUser')))
 
 	
 	const signUserOut = () =>{
@@ -19,13 +22,16 @@ function NavBar() {
 		signOut(auth).then(() => {
 		// Sign-out successful.
 		setUserData({firstName:"",lastName:"", username:"", firebaseId:""})
+		setAuthUser(null)
 		}).catch((error) => {
 		// An error happened.
 		});
 	}
 
+	console.log("authUser in nav", authUser)
+
 	function signedInButtons() {
-		if (userData.username === ""){
+		if (!authUser){
 			return (
 			<>
 			<Link to="/signup">
@@ -39,7 +45,7 @@ function NavBar() {
 				</button>
 			</Link>
 		</>)
-		} else {
+		} else if (authUser && userData.username) {
 			return(
 			<div class="dropdown">
 			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
