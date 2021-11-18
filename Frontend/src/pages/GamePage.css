@@ -6,3 +6,18 @@
 .image-list-item{
     width: 100%;
 }
+
+.review-header{
+    background-color: #21252C;
+}
+
+.modal-content{
+    background-color:#21252C;
+}
+
+#review-input{
+    color: #fff;
+    background-color:#3b3d41;
+    border-radius:5px;
+    width:90%;
+}

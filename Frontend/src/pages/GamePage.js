@@ -7,19 +7,22 @@ import './GamePage.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 //!jotai stuff
 import { dbUser } from '../App';
-import {useAtom} from 'jotai'
+import { useAtom } from 'jotai'
+import API from '../utils/API';
 
 
 
 
 function GamePage({ apiKey }) {
-	const [ error, setError ] = useState(null);
-	const [ isLoaded, setIsLoaded ] = useState(false);
-	const [ gameDetails, setGameDetails ] = useState([]);
-	const [ gameScreens, setGameScreens ] = useState([]);
-	const [ gameVideos, setGameVideos ] = useState([]);
+	const [error, setError] = useState(null);
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [gameDetails, setGameDetails] = useState([]);
+	const [gameScreens, setGameScreens] = useState([]);
+	const [gameVideos, setGameVideos] = useState([]);
+	const [currentReview, setCurrentReview]=useState("")
+	
 	//!jotai hook
-	const [userData, setUserData]=useAtom(dbUser)
+	const [userData, setUserData] = useAtom(dbUser)
 	// const classes = useStyles();
 
 	let { id } = useParams();
@@ -27,32 +30,10 @@ function GamePage({ apiKey }) {
 	// console.log('Game ID', id);
 	// console.log('Game Details', gameDetails);
 
-	//! This is just to test that a user is logged in, delete/refactor later
-	// useEffect(() => {
-	// 	const auth = getAuth();
-	// 	onAuthStateChanged(auth, (user) => {
-	// 		if (user) {
-	// 			console.log("user",user)
-	// 			console.log(user.email + ' is signed in!')
-	// 			//! checking for atom change
-	// 			console.log("userData",userData)
-				
-	// 		  // User is signed in, see docs for a list of available properties
-	// 		  // https://firebase.google.com/docs/reference/js/firebase.User
-	// 		  const uid = user.uid;
-	// 		  // ...
-	// 		} else {
-	// 		  // User is signed out
-	// 		  // ...
-	// 		}
-	// 	  });
-		
-	// }, [])
-
 	useEffect(() => {
 		console.log(userData)
 	}, [userData])
-	
+
 
 	useEffect(
 		() => {
@@ -100,13 +81,31 @@ function GamePage({ apiKey }) {
 							}
 						)
 				).then(
-                    setIsLoaded(true)
-                )
+					setIsLoaded(true)
+				)
 
 			// console.log(gameDetails);
 		},
-		[ gameDetails.slug ]
+		[gameDetails.slug]
 	);
+
+	function handleChange(event){
+		event.preventDefault();
+		setCurrentReview(event.target.value);
+	}
+
+	function handleSubmit(event){
+		event.preventDefault();
+		// mock up of what we'll be passing into our req.body:
+		API.addReview({
+			game_id:id,
+			review:currentReview,
+			user_id:userData.id
+		})
+		alert("REVIEW ADDED TO REVIEWS TABLE"+"\nReview: "+ currentReview + "\nUser Id: " + userData.id + "\nGame Id: " + id);
+	}
+
+
 
 	return (
 		<div>
@@ -119,19 +118,19 @@ function GamePage({ apiKey }) {
 
 			<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 				<div class="carousel-inner">
-					{gameScreens[0]?.image!=='https://media.rawg.io/media/screenshots/8de/8deccdba405d1ccdca2d647290156330.jpg' ? gameScreens?.map(
+					{gameScreens[0]?.image !== 'https://media.rawg.io/media/screenshots/8de/8deccdba405d1ccdca2d647290156330.jpg' ? gameScreens?.map(
 						(item) =>
 							item === gameScreens[0] ? (
-							
-									<div class="carousel-item active" data-bs-interval="5000">
-										<img src={item.image} alt={item.title} />
-									</div>
+
+								<div class="carousel-item active" data-bs-interval="5000">
+									<img src={item.image} alt={item.title} />
+								</div>
 							) : (
 								<div class="carousel-item" data-bs-interval="5000">
 									<img src={item.image} class="d-block w-100" alt="..." />
 								</div>
 							)
-					): null}
+					) : null}
 				</div>
 				<button
 					class="carousel-control-prev"
@@ -154,6 +153,33 @@ function GamePage({ apiKey }) {
 			</div>
 
 			<p className="game-page-description">{gameDetails.description_raw}</p>
+
+			{/* Button that opens modal */}
+			<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reviewModal">
+				Review This Game
+			</button>
+
+			{/* Review Modal */}
+			<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style={{ display: "none" }} aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modal-title">Write Your Review for {gameDetails.name}</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						{/* Review Input */}
+						<div class="modal-body">
+							<textarea id="review-input" value={currentReview} onChange={handleChange}></textarea>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-info" onClick={handleSubmit}>Submit Review</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* End Review Modal */}
 		</div>
 	);
 }
