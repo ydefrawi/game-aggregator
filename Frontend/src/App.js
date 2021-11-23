@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, { useState,useEffect } from 'react';
+import React, { useState,useLayoutEffect, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -68,13 +68,13 @@ function App() {
 
 	// Attempt to set dbUser Atom with firebase 
 	// Call to DB working but state isnt passed to children
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const auth = getAuth();
 		onAuthStateChanged(auth, async (user) => {
 		  if (user) {
 			console.log(user)
 			const uid = user.uid;
-			localStorage.setItem('authUser',JSON.stringify(user))
+			localStorage.setItem('authUser',true)
 			setAuthUser(user)
 			await API.getUser(uid).then((res) => {
 				setUserData(res.data)
@@ -87,9 +87,9 @@ function App() {
 		});		
 	}, [])
 
-	useEffect(() => {
-		console.log(userData)
-	}, [userData])
+	// useEffect(() => {
+	// 	console.log(userData)
+	// }, [userData])
 
 	return (
 	
