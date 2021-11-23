@@ -1,0 +1,16 @@
+.preview {
+    width: 100%;
+    max-width: 32rem;
+  }
+  
+  .preview-image {
+    width: 100%;
+    max-width:32rem;
+    height: auto !important;
+  }
+  
+  .preview-video{
+    display:none;
+    width: 100%;
+    max-width:32rem
+  }

@@ -5,6 +5,7 @@ import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import './GamePage.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import VideoCard from '../components/VideoCard/VideoCard';
 //!jotai stuff
 import { dbUser } from '../App';
 import { useAtom } from 'jotai'
@@ -73,7 +74,7 @@ function GamePage({ apiKey }) {
 						})
 						.then(
 							(result) => {
-								setGameVideos(result);
+								setGameVideos(result.results);
 							},
 							(error) => {
 								// setIsLoaded(true);
@@ -108,6 +109,7 @@ function GamePage({ apiKey }) {
 
 
 	return (
+		
 		<div>
 			{/* {console.log(gameDetails)}
 			{console.log(gameScreens)}
@@ -115,6 +117,8 @@ function GamePage({ apiKey }) {
 			{console.log(gameVideos)} */}
 
 			<Header header={gameDetails.name} />
+
+			
 
 			<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 				<div class="carousel-inner">
@@ -151,7 +155,9 @@ function GamePage({ apiKey }) {
 					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
-
+			<div id="video-row"className="row">
+				{gameVideos.length? gameVideos.map(item => <VideoCard videoData = {item} />):null}
+			</div>
 			<p className="game-page-description">{gameDetails.description_raw}</p>
 
 			{/* Button that opens modal */}
