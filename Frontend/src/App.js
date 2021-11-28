@@ -95,7 +95,7 @@ function App() {
 	
 		<Router>
 			<div className={classes.root}>
-				<NavContainer isOpened={isOpened} userData={userData} setIsOpened={setIsOpened} />
+				<NavContainer isOpened={isOpened} userData={userData} setIsOpened={setIsOpened} apiKey={apiKey} />
 				<Toolbar />
 				<div className={classes.container}>
 					<Drawer
