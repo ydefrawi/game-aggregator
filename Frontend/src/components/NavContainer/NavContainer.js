@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(styles);
 
 
-export const NavContainer = ({isOpened,setIsOpened}) => {
+export const NavContainer = ({isOpened,setIsOpened, apiKey}) => {
 	const classes = useStyles();
 
 
@@ -21,7 +21,7 @@ export const NavContainer = ({isOpened,setIsOpened}) => {
 					{isOpened ? <ChevronLeftIcon /> : <MenuIcon />}
 				</IconButton>
 				<Typography variant="h6" className={classes.title}>
-					<NavBar />
+					<NavBar apiKey={apiKey} />
 				</Typography>
 			</Toolbar>
 		</AppBar>
