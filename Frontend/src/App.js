@@ -3,10 +3,10 @@ import './App.css';
 import React, { useState,useLayoutEffect, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import clsx from 'clsx';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NavBar from './components/NavBar/NavBar';
-import Sidebar from './components/Sidebar';
+// import MenuIcon from '@material-ui/icons/Menu';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import NavBar from './components/NavBar/NavBar';
+// import Sidebar from './components/Sidebar';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -24,6 +24,7 @@ import PlatformPage from './pages/PlatformPage';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import UserProfile from './pages/UserProfile';
+import SearchResults from './components/SearchResults/SearchResults'
 
 //Firebase
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -36,6 +37,7 @@ import API from './utils/API';
 //Jotai context
 export const dbUser = atom({firstName:"",lastName:"", username:"", firebaseId:""})
 export const authAtom = atom(null);
+
 
 
 //!firebase initialization
@@ -97,6 +99,11 @@ function App() {
 			<div className={classes.root}>
 				<NavContainer isOpened={isOpened} userData={userData} setIsOpened={setIsOpened} apiKey={apiKey} />
 				<Toolbar />
+				{/* Search Results Div */}
+				<div>
+					<SearchResults />
+				</div>
+
 				<div className={classes.container}>
 					<Drawer
 						variant="permanent"
@@ -138,8 +145,11 @@ function App() {
 						<Route exact path={ [ '/platforms/:id' ]}>
 							<PlatformPage apiKey={apiKey} />
 						</Route>
+					
 					</main>
-				</div>
+				</div>					
+				
+				
 				<div className={classes.footer}>
 					<Typography variant="h6">Footer</Typography>
 				</div>
