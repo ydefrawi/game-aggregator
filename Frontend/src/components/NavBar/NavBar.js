@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import SearchResult from '../SearchResult/SearchResult'
-import { useAtom } from 'jotai';
+import { atom, useAtom } from 'jotai';
 // import { dbUser } from '../../App';
 import { authAtom, dbUser } from '../../App';
 import { getAuth, signOut } from 'firebase/auth';
@@ -14,12 +14,14 @@ import './NavBar.css';
 import { onAuthStateChanged } from '@firebase/auth';
 import { map } from '@firebase/util';
 
+export const searchAtom=atom([])
+
 function NavBar({ apiKey }) {
 	const [userData, setUserData] = useAtom(dbUser)
 	// const [authUser, setAuthUser] = useAtom(authAtom)
 	const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('authUser')))
 	const [searchTerm, setSearchTerm] = useState("")
-	const [searchResults, setSearchResults] = useState()
+	const [searchResults, setSearchResults] = useAtom(searchAtom)
 
 
 	const signUserOut = () => {
@@ -143,10 +145,10 @@ function NavBar({ apiKey }) {
 			{/* Collapsable Div */}
 			<div class="container collapse" id="searchResults">
 				<div>
-					{console.log(searchResults)}
+					{/* {console.log(searchResults)}
 					{searchResults?.map((item) => (
 						<div><SearchResult rawgData={item} /></div>
-					))}
+					))} */}
 				</div>
 			</div>
 		</>

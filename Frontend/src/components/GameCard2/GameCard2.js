@@ -59,7 +59,7 @@ function GameCard2({apiKey, gameID}) {
 useEffect(() => {
 	API.getUserFavorites(userData.id)
 	.then(res=> {
-		console.log("Users Favorites", res.data)
+		// console.log("Users Favorites", res.data)
 	})
 
 }, [userData])
