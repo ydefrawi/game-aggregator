@@ -142,15 +142,7 @@ function NavBar({ apiKey }) {
 				</div>
 			</nav>
 			
-			{/* Collapsable Div */}
-			<div class="container collapse" id="searchResults">
-				<div>
-					{/* {console.log(searchResults)}
-					{searchResults?.map((item) => (
-						<div><SearchResult rawgData={item} /></div>
-					))} */}
-				</div>
-			</div>
+
 		</>
 	);
 }

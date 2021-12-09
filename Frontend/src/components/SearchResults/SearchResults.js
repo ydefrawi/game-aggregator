@@ -6,9 +6,10 @@ const SearchResults = () => {
     const [searchData, setSearchData] = useAtom(searchAtom)
 
     return (
-        <div  
-        class="collapse" 
-        id="searchResults">
+        
+        <div class="collapse" id="searchResults">
+
+        {/* Collapsable Div, button in NavBar.js */}
         {console.log("Search data in SearchResults", searchData)}
             
             <div>Hello Hello</div>
