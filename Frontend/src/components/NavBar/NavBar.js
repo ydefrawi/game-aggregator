@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import SearchResult from '../SearchResult/SearchResult'
+import SearchResults from '../SearchResults/SearchResults'
 import { atom, useAtom } from 'jotai';
 // import { dbUser } from '../../App';
 import { authAtom, dbUser } from '../../App';
@@ -131,11 +132,14 @@ function NavBar({ apiKey }) {
 
 
 						{/* Button that submits and Collapses/Uncollapses Div */}
-							<button className="btn btn-outline-light" type="submit" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="false" aria-controls="searchResults">
+					<div className="dropdown">
+							<button className="btn btn-outline-light dropdown-toggle" type="submit" 
+							id="searchDropdown" data-bs-toggle="dropdown"  aria-expanded="false" >
 								Search
 							</button>
+						</div>
 						</form>
-
+				
 
 						{signedInButtons()}
 					</div>

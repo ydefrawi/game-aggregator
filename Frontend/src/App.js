@@ -100,10 +100,7 @@ function App() {
 				<NavContainer isOpened={isOpened} userData={userData} setIsOpened={setIsOpened} apiKey={apiKey} />
 				<Toolbar />
 				{/* Search Results Div */}
-				<div>
-					<SearchResults />
-				</div>
-
+				<SearchResults />
 				<div className={classes.container}>
 					<Drawer
 						variant="permanent"

@@ -7,15 +7,14 @@ const SearchResults = () => {
 
     return (
         
-        <div class="collapse" id="searchResults">
+        <div className="dropdown-menu search-results" aria-labelledby="searchDropdown">
 
         {/* Collapsable Div, button in NavBar.js */}
         {console.log("Search data in SearchResults", searchData)}
             
-            <div>Hello Hello</div>
             {searchData?.map((item,i) => {
                 return(
-                      <div key={i}>
+                      <div key={i} className="dropdown-item">
                     {console.log(item.name)}
                     {item.name}
                 </div>  
