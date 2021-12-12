@@ -1,8 +1,7 @@
 import {useEffect} from 'react'
 import {useAtom} from 'jotai'
 import {searchAtom} from '../NavBar/NavBar'
-import SearchResult from '../SearchResult/SearchResult'
-
+import ThinGameCard from '../ThinGameCard/ThinGameCard'
 
 const SearchResults = () => {
     const [searchData, setSearchData] = useAtom(searchAtom)
@@ -14,9 +13,12 @@ const SearchResults = () => {
         {/* Collapsable Div, button in NavBar.js */}
         {console.log("Search data in SearchResults", searchData)}
             {searchData?.map((item,i) => (
-                <SearchResult 
+                <ThinGameCard 
                 key={i} 
-                name={item.name}/>
+                name={item.name}
+                image={item.short_screenshots[0]?.image}
+                id={item.id}
+                />
                 )
             )}    
         </div>

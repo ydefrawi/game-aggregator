@@ -1,0 +1,21 @@
+.result-card{
+    color:#fff;
+    border-radius:8px;
+    
+}
+
+
+.thumb-box{
+    width:60px;
+    height:70px;
+    display:block;
+}
+
+.mini-thumbs{
+    width:60px;
+    height:70px;
+    display:block;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

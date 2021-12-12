@@ -60,10 +60,9 @@ code {
 }
 
 .search-results{
-  position:relative;
   z-index:1;
   display:block;
-  background-color: #000000;
+  background-color: #000000ec;
   color: #fff;
   width:70%;
   border-radius: 16px;

@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import SearchResult from '../SearchResult/SearchResult'
+import ThinGameCard from '../ThinGameCard/ThinGameCard'
 import SearchResults from '../SearchResults/SearchResults'
 import { atom, useAtom } from 'jotai';
 // import { dbUser } from '../../App';
