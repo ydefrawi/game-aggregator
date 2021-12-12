@@ -1,11 +1,11 @@
 import React from 'react';
 import './SearchResult.css'
 
-function SearchResult({rawgData}) {
+function SearchResult({name}) {
 
 return (
-<div className="result-card row">
-    {rawgData.name}
+<div className="result-card dropdown-item">
+    {name}
 </div>
    
 );

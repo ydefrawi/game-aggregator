@@ -53,8 +53,23 @@ code {
   100% { transform: rotate(360deg); }
 }
 
+#search-results-container{
+  display:flex;
+  justify-content: center;
+  
+}
+
 .search-results{
   position:relative;
   z-index:1;
   display:block;
+  background-color: #000000;
+  color: #fff;
+  width:70%;
+  border-radius: 16px;
 }
+
+.search-item{
+  color: #fff;
+}
+

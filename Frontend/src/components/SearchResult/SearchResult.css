@@ -1,4 +1,8 @@
 .result-card{
-    background-color:rgb(47, 5, 161);
     height:70px;
+    color:#fff;
+}
+
+.dropdown-item{
+    padding:20px;
 }

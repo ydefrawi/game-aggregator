@@ -1,6 +1,8 @@
 import {useEffect} from 'react'
 import {useAtom} from 'jotai'
 import {searchAtom} from '../NavBar/NavBar'
+import SearchResult from '../SearchResult/SearchResult'
+
 
 const SearchResults = () => {
     const [searchData, setSearchData] = useAtom(searchAtom)
@@ -11,15 +13,12 @@ const SearchResults = () => {
 
         {/* Collapsable Div, button in NavBar.js */}
         {console.log("Search data in SearchResults", searchData)}
-            
-            {searchData?.map((item,i) => {
-                return(
-                      <div key={i} className="dropdown-item">
-                    {console.log(item.name)}
-                    {item.name}
-                </div>  
+            {searchData?.map((item,i) => (
+                <SearchResult 
+                key={i} 
+                name={item.name}/>
                 )
-            })}    
+            )}    
         </div>
     )
 }

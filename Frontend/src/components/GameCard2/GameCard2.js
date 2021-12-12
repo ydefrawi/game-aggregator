@@ -142,7 +142,7 @@ const starRating = () =>{
 						<span class="author">{gameDetails.name}</span>
 						<h1 class="title">
 							<p class="stars-outer">
-							<div class="stars-inner" style={{width:starRating()}}></div>
+							<span class="stars-inner" style={{width:starRating()}}></span>
 							</p>
 							{/* Lists platforms game is available on */}
 							<p href="#">
