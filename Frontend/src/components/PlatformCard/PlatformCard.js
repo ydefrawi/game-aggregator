@@ -11,7 +11,6 @@ function PlatformCard({ background, name, topGames, gameCount, id }) {
 
 	return (
 		<div className="example-1 game-card">
-			{console.log(topGames)}
 			<div
 				className="wrapper"
 				style={{
@@ -31,8 +30,8 @@ function PlatformCard({ background, name, topGames, gameCount, id }) {
 
 						<ul className="top-game-list">
 							<h1 className="title">
-								{topGames.slice(0, 3).map((item) => (
-									<li className="top-game-bullet">
+								{topGames.slice(0, 3).map((item,i) => (
+									<li key={i} className="top-game-bullet">
 										<a href={`/games/${item.id}`}>{item.name}</a>
 									</li>
 								))}

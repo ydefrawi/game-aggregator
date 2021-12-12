@@ -18,6 +18,7 @@ const SearchResults = () => {
                 name={item.name}
                 image={item.short_screenshots[0]?.image}
                 id={item.id}
+                tabIndex={0}
                 />
                 )
             )}    

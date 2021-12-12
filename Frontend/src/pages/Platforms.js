@@ -34,10 +34,9 @@ function Platforms({ apiKey }) {
 			{/* {console.log(platformData.results)} */}
 			<Header header={'Platforms'} subHeader={'Sorted by Popularity'} />
 			<div className="platforms-container">
-				{isLoaded?platformData?.results?.map((item) => (
+				{isLoaded?platformData?.results?.map((item,i) => (
         
-                        <div>
-                            {console.log(item)}
+                        <div key={i}>
                             <PlatformCard id={item.id} background={item.image_background} name={item.name} topGames={item.games} gameCount={item.games_count}  />
                         </div>
 				)):

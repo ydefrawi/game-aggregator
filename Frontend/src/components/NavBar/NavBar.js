@@ -72,15 +72,15 @@ function NavBar({ apiKey }) {
 				</>)
 		} else {
 			return (
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				<div className="dropdown">
+					<button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 						{userData.username ? userData.username : "Loading"}
 					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						<li><Link to="/profile"> <a class="dropdown-item" href="#">My Profile</a></Link></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><hr class="dropdown-divider" /></li>
-						<li><button onClick={signUserOut} class="dropdown-item">Sign Out</button></li>
+					<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li><Link to="/profile"> <a className="dropdown-item" href="#">My Profile</a></Link></li>
+						<li><a className="dropdown-item" href="#">Another action</a></li>
+						<li><hr className="dropdown-divider" /></li>
+						<li><button onClick={signUserOut} className="dropdown-item">Sign Out</button></li>
 					</ul>
 				</div>
 			)
