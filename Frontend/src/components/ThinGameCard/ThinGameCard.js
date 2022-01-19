@@ -4,7 +4,7 @@ import './ThinGameCard.css'
 function ThinGameCard({name,image, id}) {
 
 return (
-<div className="result-card dropdown-item">
+<li className="result-card dropdown-item">
 <div className="row">
     <div className="col-1">
         <a role="button" className="thumb-box" href={`/games/${id}`}>
@@ -18,7 +18,7 @@ return (
         Platforms
     </div>
 </div>
-</div>
+</li>
 );
 }
 
