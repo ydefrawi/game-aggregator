@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 // });
 
 app.get('*', function (req, res) {
-  const index = path.join(__dirname, '/Frontend/build', 'index.html');
+  const index = path.join(__dirname, 'Frontend/build', 'index.html');
   res.sendFile(index);
 });
 
