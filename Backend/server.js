@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import express from "express";
 import {sequelize} from './config/connection.js';
+import path from 'path';
 const app = express();
 
 //middleware
@@ -12,7 +13,13 @@ const PORT = process.env.PORT || 3001;
 dotenv.config();
 
 import {router} from './controllers/index.js'
+
 app.use('/api',router)
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, '../Frontend/build')));
+}
+
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../Frontend/build/index.html'));
