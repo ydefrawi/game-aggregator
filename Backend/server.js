@@ -1,7 +1,8 @@
 import dotenv from 'dotenv'
 import express from "express";
 import {sequelize} from './config/connection.js';
-import * as path from 'path';
+import path from 'path';
+const __dirname = path.resolve()
 const app = express();
 
 //middleware
