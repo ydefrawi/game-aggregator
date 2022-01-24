@@ -14,6 +14,10 @@ dotenv.config();
 import {router} from './controllers/index.js'
 app.use('/api',router)
 
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../Frontend/build/index.html'));
+});
+
 
 // //! importing models
 // import {User, Favorites, Games} from './models';
