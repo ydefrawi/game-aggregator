@@ -72,6 +72,7 @@ function NavBar({ apiKey }) {
 		} else {
 			return (
 				<div class="dropdown">
+							{console.log(userData)}
 					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 						{userData.username ? userData.username : "Loading"}
 					</button>
