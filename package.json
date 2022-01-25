@@ -2,7 +2,7 @@
   "name": "game-aggregator",
   "version": "1.0.0",
   "description": "Game-Aggregator that demos popular/trending games for multiple platforms - with reviews, player count, ESRB Ratings, descriptions, screenshots and possibly videos/trailers.",
-  "main": "/Backend/server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node Backend/server.js",
     "build": "cd Frontend && npm run build",
