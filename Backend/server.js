@@ -20,7 +20,7 @@ import {router} from './controllers/index.js'
 app.use('/api',router)
 
 if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, '../Frontend/build')));
+	app.use(express.static(path.join(__dirname, '/Frontend/build')));
 }
 
 app.get('*', (req, res) => {
