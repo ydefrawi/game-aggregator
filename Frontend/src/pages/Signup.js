@@ -53,7 +53,6 @@ function Signup() {
 				.then((response) => {
 					setUserData(response.data);
 				})
-
 			// ...
 		} catch (error) {
 			const errorCode = error.code;

@@ -9,21 +9,31 @@ import SearchResult from '../SearchResult/SearchResult'
 import { atom, useAtom } from 'jotai';
 // import { dbUser } from '../../App';
 import { authAtom, dbUser } from '../../App';
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import './NavBar.css';
-import { onAuthStateChanged } from '@firebase/auth';
 import { map } from '@firebase/util';
 
 export const searchAtom=atom([])
+
+
+
 
 function NavBar({ apiKey }) {
 	const [userData, setUserData] = useAtom(dbUser)
 	// const [authUser, setAuthUser] = useAtom(authAtom)
 	const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('authUser')))
 	const [searchTerm, setSearchTerm] = useState("")
-	const [searchResults, setSearchResults] = useAtom(searchAtom)
-
-
+	const [searchResults, setSearchResults] = useAtom(searchAtom)	
+	const auth = getAuth();
+	onAuthStateChanged(auth, async (user)=>{
+		if(user){
+			console.log("User is signed in with email:",user.email)
+			console.log("userName after signing in (nav bar)",userData.username)
+		} else {
+			console.log("User is not signed in!")
+		}
+	})
+	
 	const signUserOut = () => {
 		const auth = getAuth();
 		signOut(auth).then(() => {
@@ -72,9 +82,9 @@ function NavBar({ apiKey }) {
 		} else {
 			return (
 				<div class="dropdown">
-							{console.log(userData)}
+							{console.log("userData in nav", typeof userData.username)}
 					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						{userData.username ? userData.username : "Loading"}
+						{userData.username && typeof userData.username!==undefined ? userData.username : "Loading"}
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						<li><Link to="/profile"> <a class="dropdown-item" href="#">My Profile</a></Link></li>
