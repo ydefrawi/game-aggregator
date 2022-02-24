@@ -53,6 +53,7 @@ function Signup() {
 				.then((response) => {
 					setUserData(response.data);
 				})
+				.then(window.location.replace('/'))
 
 			// ...
 		} catch (error) {
