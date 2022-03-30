@@ -139,7 +139,9 @@ const starRating = () =>{
 				</div>
 				<div class="data">
 					<div class="content">
+					<a href={"/games/"+gameDetails.id} className="gameLink">
 						<span class="author">{gameDetails.name}</span>
+						</a>
 						<h1 class="title">
 							<p class="stars-outer">
 							<div class="stars-inner" style={{width:starRating()}}></div>
