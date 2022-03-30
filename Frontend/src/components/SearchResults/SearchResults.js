@@ -16,7 +16,7 @@ const SearchResults = () => {
                 return(
                       <div key={i}>
                     {console.log(item.name)}
-                    {item.name}
+                    <a href={"/games/"+item.id} className="gameLink"> {item.name}</a>
                 </div>  
                 )
             })}    
