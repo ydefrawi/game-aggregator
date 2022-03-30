@@ -151,7 +151,7 @@ function App() {
 				
 				
 				<div className={classes.footer}>
-					<Typography variant="h6">Footer</Typography>
+					<Typography variant="h6"><Typography variant="h6">Copyright Ⓒ 2022 Yousef Defrawi and Ian Darland. All Rights Reserved</Typography></Typography>
 				</div>
 			</div>
 		</Router>
