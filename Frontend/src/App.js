@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import React, { useState,useLayoutEffect, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import clsx from 'clsx';
 // import MenuIcon from '@material-ui/icons/Menu';
 // import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -131,8 +131,14 @@ function App() {
 					<main className={classes.main}>
 						<Route exact path={[ '/', '/home' ]} component={Home} />
 						<Route exact path={[ '/trending' ]} component={Trending} />
-						<Route exact path={[ '/signup' ]} component={Signup} />
-						<Route exact path={[ '/signin' ]} component={Signin} />
+						<Route exact path={[ '/signup' ]}>
+							{localStorage.getItem('authUser') ? <Redirect to="/home"/> :
+							<Signup/>}
+						</Route>
+						<Route exact path={[ '/signin' ]}>
+							{localStorage.getItem('authUser') ? <Redirect to="/home"/> :
+							<Signin/>}
+						</Route>
 						<Route exact path={[ '/profile' ]} >
 							<UserProfile apiKey={apiKey}/>
 						</Route>
