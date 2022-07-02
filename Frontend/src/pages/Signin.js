@@ -28,6 +28,7 @@ function Signin() {
 				// Signed in
 				const user = userCredential.user;
 				console.log("user", user)
+				window.location.replace("/home")
 				// ...
 			})
 			.catch((error) => {
